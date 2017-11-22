@@ -1,0 +1,67 @@
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+KERNELDIR	Makefile	/^KERNELDIR?=\/lib\/modules\/$(shell uname -r)\/build$/;"	m
+PWD	Makefile	/^PWD:=$(shell pwd)$/;"	m
+busModule-objs	Makefile	/^busModule-objs:=$(usrObjs)$/;"	m
+obj-m	Makefile	/^obj-m:=busModule.o$/;"	m
+usrObjs	Makefile	/^usrObjs:=$(usrSrc:.c=.o)$/;"	m
+usrSrc	Makefile	/^usrSrc:=$(patsubst %.mod.c,,$(usrSrc))$/;"	m
+usrSrc	Makefile	/^usrSrc:=$(wildcard *.c)$/;"	m
+usrSrc	Makefile	/^usrSrc:=$(wildcard *.cpp)$/;"	m
+__this_module	busModule.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__used	busModule.mod.c	/^__used$/;"	v	file:
+__used	busModule.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+author	bus_test.c	/^char *author = "FayeYang";$/;"	v
+faye_bus	bus_test.c	/^EXPORT_SYMBOL( faye_bus );$/;"	v
+faye_bus	bus_test.c	/^struct bus_type  faye_bus = {$/;"	v	typeref:struct:bus_type
+faye_busDevice	bus_test.c	/^EXPORT_SYMBOL( faye_busDevice );$/;"	v
+faye_busDevice	bus_test.c	/^struct device  faye_busDevice = {$/;"	v	typeref:struct:device
+faye_busDevice_release	bus_test.c	/^void faye_busDevice_release( struct device *dev ){$/;"	f
+faye_bus_exit	bus_test.c	/^module_exit( faye_bus_exit );$/;"	v
+faye_bus_exit	bus_test.c	/^static void __exit faye_bus_exit( void ){$/;"	f	file:
+faye_bus_init	bus_test.c	/^module_init( faye_bus_init );$/;"	v
+faye_bus_init	bus_test.c	/^static int __init faye_bus_init( void ){$/;"	f	file:
+faye_bus_match	bus_test.c	/^static int faye_bus_match( struct device *dev, struct device_driver *drv ){$/;"	f	file:
+faye_bus_remove	bus_test.c	/^static int faye_bus_remove( struct device *dev ){$/;"	f	file:
+show_busDevice_attr	bus_test.c	/^static ssize_t show_busDevice_attr( struct device *dev, struct device_attribute *attr, char *buf ){$/;"	f	file:
+show_bus_attribute_1	bus_test.c	/^static ssize_t show_bus_attribute_1( struct bus_type *bus, char *buf ){$/;"	f	file:
+show_bus_author	bus_test.c	/^static ssize_t show_bus_author( struct bus_type *bus, char *buf ){$/;"	f	file:
+KERNELDIR	device_test/Makefile	/^KERNELDIR?=\/lib\/modules\/$(shell uname -r)\/build$/;"	m
+PWD	device_test/Makefile	/^PWD:=$(shell pwd)$/;"	m
+deviceModule-objs	device_test/Makefile	/^deviceModule-objs:=$(usrObjs)$/;"	m
+obj-m	device_test/Makefile	/^obj-m:=deviceModule.o$/;"	m
+usrObjs	device_test/Makefile	/^usrObjs:=$(usrSrc:.c=.o)$/;"	m
+usrSrc	device_test/Makefile	/^usrSrc:=$(patsubst %.mod.c,,$(usrSrc))$/;"	m
+usrSrc	device_test/Makefile	/^usrSrc:=$(wildcard *.c)$/;"	m
+usrSrc	device_test/Makefile	/^usrSrc:=$(wildcard *.cpp)$/;"	m
+__this_module	device_test/deviceModule.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__used	device_test/deviceModule.mod.c	/^__used$/;"	v	file:
+__used	device_test/deviceModule.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+faye_device	device_test/device_test.c	/^struct device faye_device = {$/;"	v	typeref:struct:device
+faye_device_exit	device_test/device_test.c	/^module_exit( faye_device_exit );$/;"	v
+faye_device_exit	device_test/device_test.c	/^static void __exit faye_device_exit( void ){$/;"	f	file:
+faye_device_init	device_test/device_test.c	/^module_init( faye_device_init );$/;"	v
+faye_device_init	device_test/device_test.c	/^static int __init faye_device_init( void ){$/;"	f	file:
+faye_device_release	device_test/device_test.c	/^void  faye_device_release( struct device *dev ){$/;"	f
+show_faye_device_attr_1	device_test/device_test.c	/^static ssize_t show_faye_device_attr_1( struct device *dev, struct device_attribute *attr, char *buf ){$/;"	f	file:
+show_faye_device_attr_2	device_test/device_test.c	/^static ssize_t show_faye_device_attr_2( struct device *dev, struct device_attribute *attr, char *buf ){$/;"	f	file:
+KERNELDIR	driver_test/Makefile	/^KERNELDIR?=\/lib\/modules\/$(shell uname -r)\/build$/;"	m
+PWD	driver_test/Makefile	/^PWD:=$(shell pwd)$/;"	m
+driverModule-objs	driver_test/Makefile	/^driverModule-objs:=$(usrObjs)$/;"	m
+obj-m	driver_test/Makefile	/^obj-m:=driverModule.o$/;"	m
+usrObjs	driver_test/Makefile	/^usrObjs:=$(usrSrc:.c=.o)$/;"	m
+usrSrc	driver_test/Makefile	/^usrSrc:=$(patsubst %.mod.c,,$(usrSrc))$/;"	m
+usrSrc	driver_test/Makefile	/^usrSrc:=$(wildcard *.c)$/;"	m
+usrSrc	driver_test/Makefile	/^usrSrc:=$(wildcard *.cpp)$/;"	m
+__this_module	driver_test/driverModule.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__used	driver_test/driverModule.mod.c	/^__used$/;"	v	file:
+__used	driver_test/driverModule.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+author	driver_test/driver_test.c	/^char *author = "faye";$/;"	v
+faye_device_driver	driver_test/driver_test.c	/^struct device_driver faye_device_driver = {$/;"	v	typeref:struct:device_driver
+faye_driver_probe	driver_test/driver_test.c	/^int faye_driver_probe( struct device *dev ){$/;"	f
+faye_driver_remove	driver_test/driver_test.c	/^int faye_driver_remove( struct device *dev ){$/;"	f
+show_driver_author	driver_test/driver_test.c	/^static ssize_t show_driver_author( struct device_driver *driver, char *buf ){$/;"	f	file:
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/

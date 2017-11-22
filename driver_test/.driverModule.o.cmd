@@ -1,0 +1,1 @@
+cmd_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driverModule.o := ld -m elf_x86_64   -r -o /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driverModule.o /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.o 

@@ -1,0 +1,308 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"faye_driv",
+				"faye_driver_remove"
+			],
+			[
+				"faye_dev",
+				"faye_driver_probe"
+			],
+			[
+				"sub",
+				"subDevice_release"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 94.0,
+		"last_filter": "theme",
+		"selected_items":
+		[
+			[
+				"theme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"Package Control: install package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 461.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"\"auto_find_in_selection\"",
+			"auto_find_in_selection",
+			"auto_fine",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/faye/work/work_normal/gcc_test/device_driver_test",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test"
+	],
+	"file_history":
+	[
+		"/home/faye/work/work_normal/gcc_test/driverModule_test/bus.c",
+		"/home/faye/work/work_normal/gcc_test/driverModule_test/driver/driver.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.c",
+		"/home/faye/work/work_normal/gcc_test/driverModule_test/driver/Module.symvers",
+		"/home/faye/work/work_normal/gcc_test/driverModule_test/driver/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/driverModule_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/bus_test.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/Module.symvers",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/device_test.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driverModule.mod.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/Module.symvers",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/dump",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/dump1",
+		"/home/faye/work/gsync.log",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/Module.symvers",
+		"/home/faye/source.txt",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/xyz.c",
+		"/home/faye/work/work_normal/opt_test/cardWork/phone.sh",
+		"/home/faye/work/work_normal/opt_test/cardWork/phone.txt",
+		"/home/faye/work/work_normal/opt_test/cardWork/cb.txt",
+		"/home/faye/work/work_normal/opt_test/cardWork/cs.file.txt",
+		"/home/faye/work/work_normal/gcc_test/cbp/module_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/makefile",
+		"/home/faye/work/work_normal/gcc_test/gdb_sublime/makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_driver_test.sublime-project",
+		"/home/faye/work/work_normal/gcc_test/cbp/mallocTest/makefile",
+		"/home/faye/work/gsync.sh",
+		"/home/faye/.goodsync/jobs.tix",
+		"/home/faye/cardWork/phone.sh",
+		"/home/faye/cardWork/pNum.txt",
+		"/home/faye/cardWork/phone.txt",
+		"/home/faye/cardWork/all.txt",
+		"/mnt/DTSE9/work/work_normal/cardWork/phone.sh",
+		"/home/faye/cardWork/.git/COMMIT_EDITMSG",
+		"/home/faye/cardWork/dc.file.txt",
+		"/home/faye/cardWork/cs.file.txt",
+		"/home/faye/cardWork/cn.file.txt",
+		"/home/faye/cardWork/cb.file.txt",
+		"/home/faye/cardWork/ly.file.txt",
+		"/home/faye/cardWork/ls.file.txt",
+		"/home/faye/cardWork/lh.file.txt",
+		"/home/faye/cardWork/jd.file.txt",
+		"/home/faye/cardWork/source.txt",
+		"/home/faye/cardWork/jd.txt",
+		"/home/faye/cardWork/lh.txt",
+		"/home/faye/cardWork/ls.txt",
+		"/home/faye/cardWork/test.sh",
+		"/home/faye/cardWork/ly.txt",
+		"/home/faye/cardWork/dc.txt",
+		"/home/faye/cardWork/cs.txt",
+		"/home/faye/cardWork/cn.txt",
+		"/home/faye/cardWork/cb.txt",
+		"/etc/udev/rules.d/udisk.sh",
+		"/etc/udev/rules.d/70-udisk.rules",
+		"/home/faye/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/faye/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/media/faye/44b23f52-e494-429f-bf9f-e5e7bd303697/work/gsync.sh",
+		"/home/faye/cardWork/output1111.txt",
+		"/home/faye/cardWork/output1.txt",
+		"/home/faye/work/opt_test/gsync_opt/gsync_opt.sh",
+		"/home/faye/水电费",
+		"/home/faye/work/gcc_test/arm/test.c",
+		"/home/faye/work/gcc_test/arm/makefile",
+		"/home/faye/subl2/sublime-imfix",
+		"/home/faye/subl2/README.md",
+		"/home/faye/subl-fix/sublime_imfix.c",
+		"/home/faye/work/opt_test/gsync_opt/test.sh",
+		"/home/faye/work/opt_test/gsync_opt/gsync.log",
+		"/home/faye/work/gcc_test/cbp/flush/main.c"
+	],
+	"find":
+	{
+		"height": 53.0
+	},
+	"find_in_files":
+	{
+		"height": 136.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"my_dev",
+			"Version",
+			"crc_faye_bus",
+			"__ksymtab",
+			"faye_bus",
+			"subDevice_exit",
+			"subDevice_init",
+			"__crc_faye_bus",
+			"185842d9",
+			"faye_bus",
+			"58046959",
+			"faye_bus",
+			"kill",
+			"device_driver_test",
+			"->",
+			"PAGE_SIZE",
+			"error",
+			"??",
+			"/opt_test/cardWork/test.sh",
+			"??",
+			"510802194103151034",
+			"\"",
+			"济南市历下区菜市庄1号楼4单元601室",
+			"\"",
+			"历下区菜市庄154号",
+			"\"",
+			"小元",
+			"小",
+			"小元"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 48.0
+	},
+	"input":
+	{
+		"height": 60.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "device_driver_test.sublime-project",
+	"replace":
+	{
+		"height": 92.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/work/opt_test/gsync_opt/test.sh"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 38.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 378.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 160.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
