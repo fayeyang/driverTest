@@ -1,5 +1,7 @@
+#include  <linux/kernel.h>
 #include  <linux/module.h>
 #include  <linux/init.h>
+#include  <linux/string.h>
 #include  <linux/device.h>
 
 MODULE_AUTHOR( "faye" );
@@ -32,6 +34,8 @@ static DEVICE_ATTR( faye_device_attr_2, S_IRUGO, show_faye_device_attr_2, NULL )
 static int __init faye_device_init( void ){
 	int ret;
 
+    printk( "/**** faye_device_init ***************************************/\n" );
+
 	ret = device_register( &faye_device );
 	if( ret ){
 		printk( KERN_DEBUG "Unable to register device\n" );
@@ -49,11 +53,13 @@ static int __init faye_device_init( void ){
 	}
 	
 	printk( KERN_DEBUG "faye_device register success\n" );
+	printk( "/**** faye_device_init ***************************************/\n" );
 	return 0;
 }
 
 static void __exit faye_device_exit( void ){
 	device_unregister( &faye_device );
+	printk( "faye_device exit success!\n" );
 }
 
 module_init( faye_device_init );

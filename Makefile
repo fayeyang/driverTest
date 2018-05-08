@@ -9,6 +9,7 @@ usrSrc:=$(wildcard *.c)
 usrSrc:=$(patsubst %.mod.c,,$(usrSrc))
 usrObjs:=$(usrSrc:.c=.o)
 usrSrc:=$(wildcard *.cpp)
+usrSrc:=$(patsubst %.mod.cpp,,$(usrSrc))
 usrObjs+=$(usrSrc:.cpp=.o)
 export usrObjs
 KERNELDIR?=/lib/modules/$(shell uname -r)/build

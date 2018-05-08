@@ -19,6 +19,33 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "bus_test.c",
+			"settings":
+			{
+				"buffer_size": 4648,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "device_test/device_test.c",
+			"settings":
+			{
+				"buffer_size": 1958,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "driver_test/driver_test.c",
+			"settings":
+			{
+				"buffer_size": 2591,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -77,24 +104,31 @@
 	],
 	"file_history":
 	[
-		"/home/faye/work/work_normal/gcc_test/driverModule_test/bus.c",
+		"/mnt/DTSE9/work/gsync.log",
+		"/mnt/DTSE9/work/gsync.sh",
+		"/home/faye/work/gsync.sh",
+		"/sys/module/busModule/sections/.text",
+		"/sys/module/busModule/sections/__ksymtab",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/Makefile",
+		"/home/faye/work/work_normal/gcc_test/gdb_sublime/makefile",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/deviceModule.ko",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/device_test.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/bus_test.c",
+		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/Module.symvers",
 		"/home/faye/work/work_normal/gcc_test/driverModule_test/driver/driver.c",
+		"/home/faye/work/work_normal/gcc_test/driverModule_test/bus.c",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.c",
 		"/home/faye/work/work_normal/gcc_test/driverModule_test/driver/Module.symvers",
 		"/home/faye/work/work_normal/gcc_test/driverModule_test/driver/Makefile",
-		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/Makefile",
 		"/home/faye/work/work_normal/gcc_test/driverModule_test/Makefile",
-		"/home/faye/work/work_normal/gcc_test/device_driver_test/Makefile",
-		"/home/faye/work/work_normal/gcc_test/device_driver_test/bus_test.c",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/Module.symvers",
-		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/device_test.c",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driverModule.mod.c",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/Module.symvers",
-		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/Makefile",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/dump",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/dump1",
 		"/home/faye/work/gsync.log",
-		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test/Module.symvers",
 		"/home/faye/source.txt",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_test.c",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/xyz.c",
@@ -104,10 +138,8 @@
 		"/home/faye/work/work_normal/opt_test/cardWork/cs.file.txt",
 		"/home/faye/work/work_normal/gcc_test/cbp/module_test/Makefile",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/makefile",
-		"/home/faye/work/work_normal/gcc_test/gdb_sublime/makefile",
 		"/home/faye/work/work_normal/gcc_test/device_driver_test/device_driver_test.sublime-project",
 		"/home/faye/work/work_normal/gcc_test/cbp/mallocTest/makefile",
-		"/home/faye/work/gsync.sh",
 		"/home/faye/.goodsync/jobs.tix",
 		"/home/faye/cardWork/phone.sh",
 		"/home/faye/cardWork/pNum.txt",
@@ -167,6 +199,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\t.",
+			"dev_name",
+			"faye_driver_remove",
+			"init_name",
+			"init",
 			"my_dev",
 			"Version",
 			"crc_faye_bus",
@@ -214,8 +251,97 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "bus_test.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1867,
+								1867
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1248.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "device_test/device_test.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1958,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1941,
+								1944
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1318.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "driver_test/driver_test.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2591,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2068,
+								2068
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],

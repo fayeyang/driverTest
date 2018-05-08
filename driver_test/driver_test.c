@@ -1,8 +1,8 @@
+#include  <linux/kernel.h>
 #include  <linux/module.h>
 #include  <linux/init.h>
 #include  <linux/string.h>
 #include  <linux/device.h>
-#include  <linux/kernel.h>
 
 MODULE_AUTHOR( "faye" );
 MODULE_LICENSE( "GPL" );
@@ -26,11 +26,11 @@ void faye_driver_shutdown( struct device *dev ){
 }
 
 struct device_driver faye_device_driver = {
-	.name	= "faye_device1",
-	.bus	= &faye_bus,
-	.probe	= faye_driver_probe,
-	.remove	= faye_driver_remove,
-	.shutdown = faye_driver_shutdown,
+	.name	    = "faye_device",
+	.bus	    = &faye_bus,
+	.probe	    =  faye_driver_probe,
+	.remove	    =  faye_driver_remove,
+	.shutdown   =  faye_driver_shutdown,
 };
 
 static ssize_t show_faye_driver_author( struct device_driver *driver, char *buf ){
@@ -51,6 +51,7 @@ static DRIVER_ATTR( faye_device_driver_attr2, S_IRUGO, faye_device_driver_attr2,
 static int __init faye_driver_init( void ){
 	int ret;
 	
+	printk( "/**** faye_device_driver_init ***************************************/\n" );
 	ret = driver_register( &faye_device_driver );
 	if( ret ){
 		printk( "faye device driver register failed!\n" );
@@ -71,11 +72,13 @@ static int __init faye_driver_init( void ){
 	}
 
 	printk( "faye device driver register success!\n" );
+	printk( "/**** faye_device_driver_init ***************************************/\n" );
 	return ret;
 }
 
 static void __exit faye_driver_exit( void ){
 	driver_unregister( &faye_device_driver );
+	printk( "faye_device_driver exit success!\n" );
 }
 
 module_init( faye_driver_init );

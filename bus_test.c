@@ -1,8 +1,8 @@
+#include  <linux/kernel.h>
 #include  <linux/module.h>
 #include  <linux/init.h>
 #include  <linux/string.h>
 #include  <linux/device.h>
-#include  <linux/kernel.h>
 
 MODULE_AUTHOR( "faye" );
 MODULE_LICENSE( "GPL" );
@@ -15,17 +15,20 @@ char *author = "FayeYang";
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
     printk( "in faye_bus_match!\n" );
-    return !strncmp( dev->init_name, drv->name, strlen(drv->name) );
+    printk( "device is: %s\n", dev_name(dev) );
+    printk( "device driver is: %s\n", drv->name );
+    return !strncmp( dev_name( dev ), drv->name, strlen(drv->name) );
+}
+
+static int faye_bus_probe( struct device *dev ){
+    printk( "in faye_bus probe\n" );
+    printk(  "device is:%s\n", dev_name(dev) );
+    return 0;
 }
 
 /* struct bus_type->remove()函数指针会指向本函数 */
 static int faye_bus_remove( struct device *dev ){
     printk( "faye bus removed!\n" );
-    return 0;
-}
-
-static int faye_bus_probe( struct device *dev ){
-    printk( "in faye_bus probe\n" );
     return 0;
 }
 
@@ -35,11 +38,11 @@ static void faye_bus_shutdown( struct device *dev ){
 
 /* 用户自定义总线相关bus_type对象 */
 struct bus_type  faye_bus = {
-    .name   = "faye_bus",   /* 总线名，注册总线后，会在/sys/bus/目录下建立该名称的目录 */
-    .remove =  faye_bus_remove,
-    .match  =  faye_bus_match,
-    .probe  =  faye_bus_probe,
-    .shutdown = faye_bus_shutdown,
+    .name     = "faye_bus",   /* 总线名，注册总线后，会在/sys/bus/目录下建立该名称的目录 */
+    .match    =  faye_bus_match,
+    .shutdown =  faye_bus_shutdown,
+    .probe    =  faye_bus_probe,
+    .remove   =  faye_bus_remove,
 };
 EXPORT_SYMBOL( faye_bus );
 
@@ -84,6 +87,8 @@ static DEVICE_ATTR( faye_busDevice_attr, S_IRUGO, show_busDevice_attr, NULL );
 static int __init faye_bus_init( void ){
     int ret;
 
+    printk( "/**** faye_bus_init ***************************************/\n" );
+
     /* 向内核注册用户自定义总线，注册成功后，会在/sys/bus/目录下建立以faye_bus.name命名的目录 */
     ret = bus_register( &faye_bus );
     if( ret )
@@ -113,6 +118,7 @@ static int __init faye_bus_init( void ){
 
 	//subDevice_init();
 
+    printk( "/**** faye_bus_init ***************************************/\n" );
     return ret;
 }
 
