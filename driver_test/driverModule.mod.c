@@ -3,6 +3,7 @@
 #include <linux/compiler.h>
 
 MODULE_INFO(vermagic, VERMAGIC_STRING);
+MODULE_INFO(name, KBUILD_MODNAME);
 
 __visible struct module __this_module
 __attribute__((section(".gnu.linkonce.this_module"))) = {
@@ -20,4 +21,4 @@ __attribute__((section(".modinfo"))) =
 "depends=busModule";
 
 
-MODULE_INFO(srcversion, "FE810FB5C6CB766A1ABEB64");
+MODULE_INFO(srcversion, "9944945EAF37D3B326F014E");

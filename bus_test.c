@@ -14,26 +14,30 @@ char *author = "FayeYang";
 
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
-    printk( "in faye_bus_match!\n" );
+    printk( "=== in faye_bus_match start ===\n" );
     printk( "device is: %s\n", dev_name(dev) );
     printk( "device driver is: %s\n", drv->name );
+    printk( "=== in faye_bus_match end ===\n" );
     return !strncmp( dev_name( dev ), drv->name, strlen(drv->name) );
 }
 
 static int faye_bus_probe( struct device *dev ){
-    printk( "in faye_bus probe\n" );
+    printk( "=== in faye_bus_probe start ===\n" );
     printk(  "device is:%s\n", dev_name(dev) );
+    printk( "=== in faye_bus_probe end ===\n" );
     return 0;
 }
 
 /* struct bus_type->remove()函数指针会指向本函数 */
 static int faye_bus_remove( struct device *dev ){
-    printk( "faye bus removed!\n" );
+    printk( "=== in faye_bus_remove start ===\n" );
+    printk( "=== in faye_bus_remove end ===\n" );
     return 0;
 }
 
 static void faye_bus_shutdown( struct device *dev ){
-    printk( "in faye_bus shutdown\n" );
+    printk( "=== in faye_bus_shutdown start ===\n" );
+    printk( "=== in faye_bus_shutdown end ===\n" );
 }
 
 /* 用户自定义总线相关bus_type对象 */

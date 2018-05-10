@@ -1,4 +1,4 @@
-cmd_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.o := gcc -Wp,-MD,/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/.driver_test.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include  -I./arch/x86/include -I./arch/x86/include/generated/uapi -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -fno-pie -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-pie -no-pie -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -maccumulate-outgoing-args -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types  -DMODULE  -DKBUILD_BASENAME='"driver_test"'  -DKBUILD_MODNAME='"driverModule"' -c -o /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.o /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.c
+cmd_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.o := gcc -Wp,-MD,/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/.driver_test.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include  -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -fno-pie -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -fno-pie -no-pie -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -DRETPOLINE -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='"driver_test"'  -DKBUILD_MODNAME='"driverModule"' -c -o /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.o /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.c
 
 source_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.o := /home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_test.c
 
@@ -9,23 +9,23 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/debug/atomic/sleep.h) \
     $(wildcard include/config/mmu.h) \
     $(wildcard include/config/prove/locking.h) \
+    $(wildcard include/config/lock/down/kernel.h) \
     $(wildcard include/config/panic/timeout.h) \
     $(wildcard include/config/tracing.h) \
     $(wildcard include/config/ftrace/mcount/record.h) \
   /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
   include/linux/linkage.h \
   include/linux/compiler.h \
-    $(wildcard include/config/sparse/rcu/pointer.h) \
     $(wildcard include/config/trace/branch/profiling.h) \
     $(wildcard include/config/profile/all/branches.h) \
     $(wildcard include/config/kasan.h) \
     $(wildcard include/config/enable/must/check.h) \
     $(wildcard include/config/enable/warn/deprecated.h) \
-    $(wildcard include/config/kprobes.h) \
   include/linux/compiler-gcc.h \
     $(wildcard include/config/arch/supports/optimized/inlining.h) \
     $(wildcard include/config/optimize/inlining.h) \
     $(wildcard include/config/gcov/kernel.h) \
+    $(wildcard include/config/stack/validation.h) \
     $(wildcard include/config/arch/use/builtin/bswap.h) \
   include/uapi/linux/types.h \
   arch/x86/include/uapi/asm/types.h \
@@ -84,10 +84,12 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/x86/cmpxchg64.h) \
     $(wildcard include/config/x86/use/3dnow.h) \
     $(wildcard include/config/matom.h) \
+    $(wildcard include/config/x86/5level.h) \
     $(wildcard include/config/paravirt.h) \
   arch/x86/include/asm/disabled-features.h \
     $(wildcard include/config/x86/intel/mpx.h) \
     $(wildcard include/config/x86/intel/memory/protection/keys.h) \
+    $(wildcard include/config/page/table/isolation.h) \
   include/asm-generic/bitops/const_hweight.h \
   include/asm-generic/bitops/le.h \
   arch/x86/include/uapi/asm/byteorder.h \
@@ -111,8 +113,8 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/kmsg/ids.h) \
     $(wildcard include/config/dynamic/debug.h) \
   include/linux/init.h \
-    $(wildcard include/config/debug/rodata.h) \
-    $(wildcard include/config/debug/set/module/ronx.h) \
+    $(wildcard include/config/strict/kernel/rwx.h) \
+    $(wildcard include/config/strict/module/rwx.h) \
   include/linux/kern_levels.h \
   include/linux/cache.h \
     $(wildcard include/config/arch/has/cache/line/size.h) \
@@ -126,11 +128,12 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/jump/label.h) \
   include/linux/jump_label.h \
   arch/x86/include/asm/jump_label.h \
+  include/linux/build_bug.h \
   include/linux/module.h \
     $(wildcard include/config/sysfs.h) \
-    $(wildcard include/config/module/sig.h) \
     $(wildcard include/config/modules/tree/lookup.h) \
     $(wildcard include/config/livepatch.h) \
+    $(wildcard include/config/module/sig.h) \
     $(wildcard include/config/generic/bug.h) \
     $(wildcard include/config/kallsyms.h) \
     $(wildcard include/config/tracepoints.h) \
@@ -199,6 +202,7 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/asm/page_64.h \
     $(wildcard include/config/debug/virtual.h) \
     $(wildcard include/config/flatmem.h) \
+    $(wildcard include/config/x86/mce.h) \
     $(wildcard include/config/x86/vsyscall/emulation.h) \
   include/linux/range.h \
   include/asm-generic/memory_model.h \
@@ -213,6 +217,7 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/asm/processor.h \
     $(wildcard include/config/cc/stackprotector.h) \
     $(wildcard include/config/x86/debugctlmsr.h) \
+    $(wildcard include/config/cpu/sup/amd.h) \
     $(wildcard include/config/xen.h) \
   arch/x86/include/asm/processor-flags.h \
   arch/x86/include/uapi/asm/processor-flags.h \
@@ -235,6 +240,10 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/proc/fs.h) \
   arch/x86/include/asm/pgtable_64_types.h \
   arch/x86/include/asm/sparsemem.h \
+  include/asm-generic/pgtable-nop4d.h \
+  arch/x86/include/asm/nospec-branch.h \
+    $(wildcard include/config/retpoline.h) \
+  arch/x86/include/asm/alternative-asm.h \
   arch/x86/include/asm/spinlock_types.h \
     $(wildcard include/config/paravirt/spinlocks.h) \
   include/asm-generic/qspinlock_types.h \
@@ -243,6 +252,7 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/uapi/asm/sigcontext.h \
   arch/x86/include/asm/msr.h \
   arch/x86/include/asm/msr-index.h \
+    $(wildcard include/config/control.h) \
     $(wildcard include/config/tdp/nominal.h) \
     $(wildcard include/config/tdp/level/1.h) \
     $(wildcard include/config/tdp/level/2.h) \
@@ -256,13 +266,13 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/hotplug/cpu.h) \
     $(wildcard include/config/debug/per/cpu/maps.h) \
   include/linux/bitmap.h \
-    $(wildcard include/config/s390.h) \
   include/linux/string.h \
     $(wildcard include/config/binary/printf.h) \
+    $(wildcard include/config/fortify/source.h) \
   include/uapi/linux/string.h \
   arch/x86/include/asm/string.h \
   arch/x86/include/asm/string_64.h \
-    $(wildcard include/config/x86/mce.h) \
+    $(wildcard include/config/arch/has/uaccess/flushcache.h) \
   arch/x86/include/uapi/asm/msr.h \
   include/uapi/linux/ioctl.h \
   arch/x86/include/uapi/asm/ioctl.h \
@@ -278,6 +288,7 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/asm-generic/atomic-long.h \
   include/linux/static_key.h \
   arch/x86/include/asm/paravirt.h \
+    $(wildcard include/config/debug/entry.h) \
   arch/x86/include/asm/frame.h \
   arch/x86/include/asm/special_insns.h \
   arch/x86/include/asm/fpu/types.h \
@@ -304,7 +315,6 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/asm-generic/qspinlock.h \
   arch/x86/include/asm/qrwlock.h \
   include/asm-generic/qrwlock.h \
-    $(wildcard include/config/cpu/big/endian.h) \
   include/linux/rwlock.h \
   include/linux/spinlock_api_smp.h \
     $(wildcard include/config/inline/spin/lock.h) \
@@ -374,6 +384,7 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/need/multiple/nodes.h) \
     $(wildcard include/config/have/arch/early/pfn/to/nid.h) \
     $(wildcard include/config/sparsemem/extreme.h) \
+    $(wildcard include/config/memory/hotremove.h) \
     $(wildcard include/config/have/arch/pfn/valid.h) \
     $(wildcard include/config/holes/in/zone.h) \
     $(wildcard include/config/arch/has/holes/memorymodel.h) \
@@ -382,14 +393,12 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/linux/numa.h \
     $(wildcard include/config/nodes/shift.h) \
   include/linux/nodemask.h \
-    $(wildcard include/config/movable/node.h) \
   include/linux/pageblock-flags.h \
     $(wildcard include/config/hugetlb/page.h) \
     $(wildcard include/config/hugetlb/page/size/variable.h) \
   include/linux/page-flags-layout.h \
   include/generated/bounds.h \
   include/linux/memory_hotplug.h \
-    $(wildcard include/config/memory/hotremove.h) \
     $(wildcard include/config/have/arch/nodedata/extension.h) \
     $(wildcard include/config/have/bootmem/info/node.h) \
   include/linux/notifier.h \
@@ -406,24 +415,29 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/rwsem/generic/spinlock.h) \
   arch/x86/include/asm/rwsem.h \
   include/linux/srcu.h \
+    $(wildcard include/config/tiny/srcu.h) \
+    $(wildcard include/config/tree/srcu.h) \
+    $(wildcard include/config/srcu.h) \
   include/linux/rcupdate.h \
-    $(wildcard include/config/tiny/rcu.h) \
-    $(wildcard include/config/tree/rcu.h) \
     $(wildcard include/config/preempt/rcu.h) \
-    $(wildcard include/config/rcu/trace.h) \
     $(wildcard include/config/rcu/stall/common.h) \
     $(wildcard include/config/no/hz/full.h) \
     $(wildcard include/config/rcu/nocb/cpu.h) \
     $(wildcard include/config/tasks/rcu.h) \
+    $(wildcard include/config/tree/rcu.h) \
+    $(wildcard include/config/tiny/rcu.h) \
     $(wildcard include/config/debug/objects/rcu/head.h) \
     $(wildcard include/config/prove/rcu.h) \
     $(wildcard include/config/rcu/boost.h) \
-    $(wildcard include/config/rcu/nocb/cpu/all.h) \
-    $(wildcard include/config/no/hz/full/sysidle.h) \
-  include/linux/completion.h \
-  include/linux/debugobjects.h \
-    $(wildcard include/config/debug/objects.h) \
-    $(wildcard include/config/debug/objects/free.h) \
+    $(wildcard include/config/arch/weak/release/acquire.h) \
+  include/linux/rcutree.h \
+  include/linux/workqueue.h \
+    $(wildcard include/config/debug/objects/work.h) \
+    $(wildcard include/config/freezer.h) \
+    $(wildcard include/config/wq/watchdog.h) \
+  include/linux/timer.h \
+    $(wildcard include/config/debug/objects/timers.h) \
+    $(wildcard include/config/no/hz/common.h) \
   include/linux/ktime.h \
   include/linux/jiffies.h \
   include/linux/timex.h \
@@ -438,25 +452,20 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/x86/tsc.h) \
   include/generated/timeconst.h \
   include/linux/timekeeping.h \
-  include/linux/rcutree.h \
-  include/linux/workqueue.h \
-    $(wildcard include/config/debug/objects/work.h) \
-    $(wildcard include/config/freezer.h) \
-    $(wildcard include/config/wq/watchdog.h) \
-  include/linux/timer.h \
-    $(wildcard include/config/timer/stats.h) \
-    $(wildcard include/config/debug/objects/timers.h) \
-    $(wildcard include/config/no/hz/common.h) \
-  include/linux/sysctl.h \
-    $(wildcard include/config/sysctl.h) \
-  include/linux/rbtree.h \
-  include/uapi/linux/sysctl.h \
+  include/linux/debugobjects.h \
+    $(wildcard include/config/debug/objects.h) \
+    $(wildcard include/config/debug/objects/free.h) \
+  include/linux/rcu_segcblist.h \
+  include/linux/srcutree.h \
+  include/linux/rcu_node_tree.h \
+    $(wildcard include/config/rcu/fanout.h) \
+    $(wildcard include/config/rcu/fanout/leaf.h) \
+  include/linux/completion.h \
   arch/x86/include/asm/mmzone.h \
   arch/x86/include/asm/mmzone_64.h \
   arch/x86/include/asm/smp.h \
     $(wildcard include/config/x86/local/apic.h) \
     $(wildcard include/config/x86/io/apic.h) \
-    $(wildcard include/config/x86/32/smp.h) \
     $(wildcard include/config/debug/nmi/selftest.h) \
   arch/x86/include/asm/mpspec.h \
     $(wildcard include/config/eisa.h) \
@@ -470,12 +479,6 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/uapi/linux/apm_bios.h \
   include/linux/edd.h \
   include/uapi/linux/edd.h \
-  arch/x86/include/asm/e820.h \
-    $(wildcard include/config/hibernation.h) \
-  arch/x86/include/uapi/asm/e820.h \
-    $(wildcard include/config/x86/pmem/legacy.h) \
-    $(wildcard include/config/intel/txt.h) \
-  include/linux/ioport.h \
   arch/x86/include/asm/ist.h \
   arch/x86/include/uapi/asm/ist.h \
   include/video/edid.h \
@@ -484,15 +487,12 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/asm/apicdef.h \
   arch/x86/include/asm/apic.h \
     $(wildcard include/config/x86/x2apic.h) \
-  include/linux/pm.h \
-    $(wildcard include/config/vt/console/sleep.h) \
-    $(wildcard include/config/pm.h) \
-    $(wildcard include/config/pm/clk.h) \
-    $(wildcard include/config/pm/generic/domains.h) \
   arch/x86/include/asm/fixmap.h \
     $(wildcard include/config/provide/ohci1394/dma/init.h) \
     $(wildcard include/config/pci/mmconfig.h) \
     $(wildcard include/config/x86/intel/mid.h) \
+    $(wildcard include/config/acpi/apei/ghes.h) \
+    $(wildcard include/config/intel/txt.h) \
   arch/x86/include/asm/acpi.h \
     $(wildcard include/config/acpi/apei.h) \
     $(wildcard include/config/acpi.h) \
@@ -528,8 +528,6 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/asm/xen/interface_64.h \
   arch/x86/include/asm/pvclock-abi.h \
   arch/x86/include/asm/xen/hypervisor.h \
-  include/xen/features.h \
-  include/xen/interface/features.h \
   arch/x86/include/uapi/asm/vsyscall.h \
   include/asm-generic/fixmap.h \
   arch/x86/include/asm/io_apic.h \
@@ -546,6 +544,10 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/linux/percpu.h \
     $(wildcard include/config/need/per/cpu/embed/first/chunk.h) \
     $(wildcard include/config/need/per/cpu/page/first/chunk.h) \
+  include/linux/sysctl.h \
+    $(wildcard include/config/sysctl.h) \
+  include/linux/rbtree.h \
+  include/uapi/linux/sysctl.h \
   include/linux/elf.h \
   arch/x86/include/asm/elf.h \
     $(wildcard include/config/x86/x32/abi.h) \
@@ -555,13 +557,17 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/asm/vdso.h \
     $(wildcard include/config/x86/x32.h) \
   include/linux/mm_types.h \
-    $(wildcard include/config/split/ptlock/cpus.h) \
-    $(wildcard include/config/arch/enable/split/pmd/ptlock.h) \
     $(wildcard include/config/have/cmpxchg/double.h) \
     $(wildcard include/config/have/aligned/struct/page.h) \
     $(wildcard include/config/userfaultfd.h) \
+    $(wildcard include/config/have/arch/compat/mmap/bases.h) \
     $(wildcard include/config/aio.h) \
     $(wildcard include/config/mmu/notifier.h) \
+    $(wildcard include/config/arch/want/batched/unmap/tlb/flush.h) \
+  include/linux/mm_types_task.h \
+    $(wildcard include/config/split/ptlock/cpus.h) \
+    $(wildcard include/config/arch/enable/split/pmd/ptlock.h) \
+  arch/x86/include/asm/tlbbatch.h \
   include/linux/auxvec.h \
   include/uapi/linux/auxvec.h \
   include/linux/uprobes.h \
@@ -576,15 +582,19 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/linux/kernfs.h \
     $(wildcard include/config/kernfs.h) \
   include/linux/idr.h \
+  include/linux/radix-tree.h \
+    $(wildcard include/config/radix/tree/multiorder.h) \
   include/linux/kobject_ns.h \
   include/linux/kref.h \
+  include/linux/refcount.h \
+    $(wildcard include/config/refcount/full.h) \
   include/linux/moduleparam.h \
     $(wildcard include/config/alpha.h) \
     $(wildcard include/config/ia64.h) \
     $(wildcard include/config/ppc64.h) \
-  include/linux/extable.h \
   include/linux/rbtree_latch.h \
   arch/x86/include/asm/module.h \
+    $(wildcard include/config/unwinder/orc.h) \
     $(wildcard include/config/m486.h) \
     $(wildcard include/config/m586.h) \
     $(wildcard include/config/m586tsc.h) \
@@ -611,9 +621,9 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/have/mod/arch/specific.h) \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
+  arch/x86/include/asm/orc_types.h \
   include/linux/device.h \
     $(wildcard include/config/debug/devres.h) \
-    $(wildcard include/config/srcu.h) \
     $(wildcard include/config/generic/msi/irq/domain.h) \
     $(wildcard include/config/pinctrl.h) \
     $(wildcard include/config/generic/msi/irq.h) \
@@ -621,8 +631,10 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/of.h) \
     $(wildcard include/config/devtmpfs.h) \
     $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/ioport.h \
   include/linux/klist.h \
   include/linux/pinctrl/devinfo.h \
+    $(wildcard include/config/pm.h) \
   include/linux/pinctrl/consumer.h \
   include/linux/seq_file.h \
   include/linux/fs.h \
@@ -635,10 +647,12 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/epoll.h) \
     $(wildcard include/config/file/locking.h) \
     $(wildcard include/config/quota.h) \
+    $(wildcard include/config/blk/dev/loop.h) \
     $(wildcard include/config/fs/dax.h) \
     $(wildcard include/config/mandatory/file/locking.h) \
     $(wildcard include/config/block.h) \
     $(wildcard include/config/migration.h) \
+  include/linux/wait_bit.h \
   include/linux/kdev_t.h \
   include/uapi/linux/kdev_t.h \
   include/linux/dcache.h \
@@ -656,17 +670,23 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/linux/list_lru.h \
     $(wildcard include/config/slob.h) \
   include/linux/shrinker.h \
-  include/linux/radix-tree.h \
-    $(wildcard include/config/radix/tree/multiorder.h) \
   include/linux/pid.h \
   include/linux/capability.h \
   include/uapi/linux/capability.h \
   include/linux/semaphore.h \
+  include/linux/fcntl.h \
+  include/uapi/linux/fcntl.h \
+  arch/x86/include/uapi/asm/fcntl.h \
+  include/uapi/asm-generic/fcntl.h \
   include/uapi/linux/fiemap.h \
   include/linux/migrate_mode.h \
   include/linux/percpu-rwsem.h \
+  include/linux/rcuwait.h \
   include/linux/rcu_sync.h \
   include/linux/delayed_call.h \
+  include/linux/uuid.h \
+  include/uapi/linux/uuid.h \
+  include/linux/errseq.h \
   include/uapi/linux/fs.h \
   include/uapi/linux/limits.h \
   include/linux/quota.h \
@@ -679,10 +699,6 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   include/linux/projid.h \
   include/uapi/linux/quota.h \
   include/linux/nfs_fs_i.h \
-  include/linux/fcntl.h \
-  include/uapi/linux/fcntl.h \
-  arch/x86/include/uapi/asm/fcntl.h \
-  include/uapi/asm-generic/fcntl.h \
   include/linux/cred.h \
     $(wildcard include/config/debug/credentials.h) \
     $(wildcard include/config/keys.h) \
@@ -691,27 +707,10 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/associative/array.h) \
   include/linux/selinux.h \
     $(wildcard include/config/security/selinux.h) \
-  include/linux/pinctrl/pinctrl-state.h \
-  include/linux/ratelimit.h \
   include/linux/sched.h \
-    $(wildcard include/config/sched/debug.h) \
-    $(wildcard include/config/lockup/detector.h) \
-    $(wildcard include/config/detect/hung/task.h) \
-    $(wildcard include/config/core/dump/default/elf/headers.h) \
     $(wildcard include/config/virt/cpu/accounting/native.h) \
-    $(wildcard include/config/sched/autogroup.h) \
-    $(wildcard include/config/bsd/process/acct.h) \
-    $(wildcard include/config/taskstats.h) \
-    $(wildcard include/config/audit.h) \
-    $(wildcard include/config/inotify/user.h) \
-    $(wildcard include/config/fanotify.h) \
-    $(wildcard include/config/posix/mqueue.h) \
-    $(wildcard include/config/perf/events.h) \
-    $(wildcard include/config/bpf/syscall.h) \
     $(wildcard include/config/sched/info.h) \
-    $(wildcard include/config/task/delay/acct.h) \
     $(wildcard include/config/schedstats.h) \
-    $(wildcard include/config/sched/mc.h) \
     $(wildcard include/config/fair/group/sched.h) \
     $(wildcard include/config/rt/group/sched.h) \
     $(wildcard include/config/cgroup/sched.h) \
@@ -720,37 +719,25 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
     $(wildcard include/config/cgroups.h) \
     $(wildcard include/config/arch/has/scaled/cputime.h) \
     $(wildcard include/config/virt/cpu/accounting/gen.h) \
+    $(wildcard include/config/posix/timers.h) \
     $(wildcard include/config/sysvipc.h) \
+    $(wildcard include/config/detect/hung/task.h) \
     $(wildcard include/config/auditsyscall.h) \
     $(wildcard include/config/rt/mutexes.h) \
     $(wildcard include/config/ubsan.h) \
     $(wildcard include/config/task/xacct.h) \
     $(wildcard include/config/cpusets.h) \
-    $(wildcard include/config/intel/rdt/a.h) \
+    $(wildcard include/config/intel/rdt.h) \
     $(wildcard include/config/futex.h) \
-    $(wildcard include/config/arch/want/batched/unmap/tlb/flush.h) \
+    $(wildcard include/config/perf/events.h) \
+    $(wildcard include/config/task/delay/acct.h) \
     $(wildcard include/config/fault/injection.h) \
     $(wildcard include/config/latencytop.h) \
     $(wildcard include/config/function/graph/tracer.h) \
     $(wildcard include/config/kcov.h) \
     $(wildcard include/config/bcache.h) \
     $(wildcard include/config/vmap/stack.h) \
-    $(wildcard include/config/arch/wants/dynamic/task/struct.h) \
-    $(wildcard include/config/have/unstable/sched/clock.h) \
-    $(wildcard include/config/irq/time/accounting.h) \
-    $(wildcard include/config/stack/growsup.h) \
-    $(wildcard include/config/have/copy/thread/tls.h) \
-    $(wildcard include/config/have/exit/thread.h) \
-    $(wildcard include/config/cpu/freq.h) \
   include/uapi/linux/sched.h \
-  include/linux/sched/prio.h \
-  include/linux/plist.h \
-    $(wildcard include/config/debug/pi/list.h) \
-  include/linux/cputime.h \
-  arch/x86/include/generated/asm/cputime.h \
-  include/asm-generic/cputime.h \
-    $(wildcard include/config/virt/cpu/accounting.h) \
-  include/asm-generic/cputime_jiffies.h \
   include/linux/sem.h \
   include/uapi/linux/sem.h \
   include/linux/ipc.h \
@@ -763,15 +750,15 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/uapi/asm/shmbuf.h \
   include/uapi/asm-generic/shmbuf.h \
   arch/x86/include/asm/shmparam.h \
-  include/linux/signal.h \
-    $(wildcard include/config/old/sigaction.h) \
-  include/uapi/linux/signal.h \
-  arch/x86/include/asm/signal.h \
-  arch/x86/include/uapi/asm/signal.h \
-  include/uapi/asm-generic/signal-defs.h \
-  arch/x86/include/uapi/asm/siginfo.h \
-  include/asm-generic/siginfo.h \
-  include/uapi/asm-generic/siginfo.h \
+  include/linux/kcov.h \
+  include/uapi/linux/kcov.h \
+  include/linux/plist.h \
+    $(wildcard include/config/debug/pi/list.h) \
+  include/linux/hrtimer.h \
+    $(wildcard include/config/high/res/timers.h) \
+    $(wildcard include/config/time/low/res.h) \
+    $(wildcard include/config/timerfd.h) \
+  include/linux/timerqueue.h \
   include/linux/seccomp.h \
     $(wildcard include/config/seccomp.h) \
     $(wildcard include/config/have/arch/seccomp/filter.h) \
@@ -787,46 +774,37 @@ deps_/home/faye/work/work_normal/gcc_test/device_driver_test/driver_test/driver_
   arch/x86/include/generated/asm/unistd_32_ia32.h \
   include/asm-generic/seccomp.h \
   include/uapi/linux/unistd.h \
-  include/linux/rtmutex.h \
-    $(wildcard include/config/debug/rt/mutexes.h) \
   include/linux/resource.h \
   include/uapi/linux/resource.h \
   arch/x86/include/uapi/asm/resource.h \
   include/asm-generic/resource.h \
   include/uapi/asm-generic/resource.h \
-  include/linux/hrtimer.h \
-    $(wildcard include/config/high/res/timers.h) \
-    $(wildcard include/config/time/low/res.h) \
-    $(wildcard include/config/timerfd.h) \
-  include/linux/timerqueue.h \
-  include/linux/kcov.h \
-  include/uapi/linux/kcov.h \
+  include/linux/latencytop.h \
+  include/linux/sched/prio.h \
+  include/linux/signal_types.h \
+    $(wildcard include/config/old/sigaction.h) \
+  include/uapi/linux/signal.h \
+  arch/x86/include/asm/signal.h \
+  arch/x86/include/uapi/asm/signal.h \
+  include/uapi/asm-generic/signal-defs.h \
+  arch/x86/include/uapi/asm/siginfo.h \
+  include/uapi/asm-generic/siginfo.h \
   include/linux/task_io_accounting.h \
     $(wildcard include/config/task/io/accounting.h) \
-  include/linux/latencytop.h \
-  include/uapi/linux/magic.h \
-  include/linux/cgroup-defs.h \
-    $(wildcard include/config/sock/cgroup/data.h) \
-  include/linux/percpu-refcount.h \
-  include/linux/bpf-cgroup.h \
-    $(wildcard include/config/cgroup/bpf.h) \
-  include/uapi/linux/bpf.h \
-  include/uapi/linux/bpf_common.h \
-  include/linux/cgroup_subsys.h \
-    $(wildcard include/config/cgroup/cpuacct.h) \
-    $(wildcard include/config/blk/cgroup.h) \
-    $(wildcard include/config/cgroup/device.h) \
-    $(wildcard include/config/cgroup/freezer.h) \
-    $(wildcard include/config/cgroup/net/classid.h) \
-    $(wildcard include/config/cgroup/perf.h) \
-    $(wildcard include/config/cgroup/net/prio.h) \
-    $(wildcard include/config/cgroup/hugetlb.h) \
-    $(wildcard include/config/cgroup/pids.h) \
-    $(wildcard include/config/cgroup/debug.h) \
+  include/linux/sched/user.h \
+    $(wildcard include/config/fanotify.h) \
+    $(wildcard include/config/posix/mqueue.h) \
+    $(wildcard include/config/bpf/syscall.h) \
+  include/linux/pinctrl/pinctrl-state.h \
+  include/linux/pm.h \
+    $(wildcard include/config/vt/console/sleep.h) \
+    $(wildcard include/config/pm/clk.h) \
+    $(wildcard include/config/pm/generic/domains.h) \
+  include/linux/ratelimit.h \
   arch/x86/include/asm/device.h \
-    $(wildcard include/config/x86/dev/dma/ops.h) \
     $(wildcard include/config/intel/iommu.h) \
     $(wildcard include/config/amd/iommu.h) \
+    $(wildcard include/config/x86/dev/dma/ops.h) \
     $(wildcard include/config/pci/domains.h) \
   include/linux/pm_wakeup.h \
 

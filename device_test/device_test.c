@@ -11,7 +11,9 @@ extern struct bus_type    faye_bus;
 extern struct device      faye_busDevice;
 
 void  faye_device_release( struct device *dev ){
-	printk( KERN_DEBUG  "faye_Device released\n" );
+	printk( "### in faye_device_release start ###\n" );
+	printk( "### faye_Device released ### \n" );
+	printk( "### in faye_device_release end ###\n" );
 }
 
 struct device faye_device = {

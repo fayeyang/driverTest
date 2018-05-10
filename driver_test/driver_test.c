@@ -12,25 +12,29 @@ extern struct bus_type faye_bus;
 char *author = "faye";
 
 int faye_driver_remove( struct device *dev ){
-	printk( "faye device driver is removed!\n" );
+	printk( "*** in faye_driver_remove start ***\n" );
+	printk( "*** in faye_driver_remove end ***\n" );
 	return 0;
 }
 
 int faye_driver_probe( struct device *dev ){
-	printk( "faye device driver can handle the device!\n" );
+	printk( "*** in faye_driver_probe start ***\n" );
+	printk( "*** faye device driver can handle the device ***\n" );
+	printk( "*** in faye_driver_probe end ***\n" );
 	return 0;
 }
 
 void faye_driver_shutdown( struct device *dev ){
-	printk( "in faye_driver shutdown\n" );
+	printk( "*** in faye_driver_shutdown start ***\n" );
+	printk( "*** in faye_driver_shutdown end ***\n" );
 }
 
 struct device_driver faye_device_driver = {
 	.name	    = "faye_device",
 	.bus	    = &faye_bus,
-	.probe	    =  faye_driver_probe,
-	.remove	    =  faye_driver_remove,
-	.shutdown   =  faye_driver_shutdown,
+	//.probe	    =  faye_driver_probe,
+	//.remove	    =  faye_driver_remove,
+	//.shutdown   =  faye_driver_shutdown,
 };
 
 static ssize_t show_faye_driver_author( struct device_driver *driver, char *buf ){
