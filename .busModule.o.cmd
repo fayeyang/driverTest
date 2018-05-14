@@ -1,1 +1,1 @@
-cmd_/home/faye/work/work_normal/gcc_test/driverTest/busModule.o := ld -m elf_x86_64   -r -o /home/faye/work/work_normal/gcc_test/driverTest/busModule.o /home/faye/work/work_normal/gcc_test/driverTest/bus_test.o 
+cmd_/home/faye/work/work_normal/gcc_test/device_driver_test/busModule.o := ld -m elf_x86_64   -r -o /home/faye/work/work_normal/gcc_test/device_driver_test/busModule.o /home/faye/work/work_normal/gcc_test/device_driver_test/bus_test.o 

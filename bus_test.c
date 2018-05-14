@@ -88,7 +88,7 @@ struct device  faye_busDevice = {
 EXPORT_SYMBOL( faye_busDevice );
 
 static ssize_t show_busDevice_attr( struct device *dev, struct device_attribute *attr, char *buf ){
-    return snprintf( buf, PAGE_SIZE, "%s\n", "faye_device_attribute" );
+    return snprintf( buf, PAGE_SIZE, "%s\n", "faye_busDevice_attribute" );
 }
 static DEVICE_ATTR( faye_busDevice_attr, S_IRUGO, show_busDevice_attr, NULL );
 
@@ -134,6 +134,8 @@ static void __exit faye_bus_exit( void ){
 
     //subDevice_exit();
  
+    /* 注意卸载顺序,先卸载总线下设备,再卸载总线! */
+
     device_unregister( &faye_busDevice );       /*
             * 卸载用户自定义设备，若卸载成功,则会删除/sys/devices/目录下以faye_busDevice.initname命名的目录
             */

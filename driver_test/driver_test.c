@@ -13,12 +13,14 @@ char *author = "faye";
 
 int faye_driver_remove( struct device *dev ){
 	printk( "*** in faye_driver_remove start ***\n" );
+	printk(  "device is:%s\n", dev_name(dev) );
 	printk( "*** in faye_driver_remove end ***\n" );
 	return 0;
 }
 
 int faye_driver_probe( struct device *dev ){
 	printk( "*** in faye_driver_probe start ***\n" );
+	printk(  "device is:%s\n", dev_name(dev) );
 	printk( "*** faye device driver can handle the device ***\n" );
 	printk( "*** in faye_driver_probe end ***\n" );
 	return 0;
@@ -26,6 +28,7 @@ int faye_driver_probe( struct device *dev ){
 
 void faye_driver_shutdown( struct device *dev ){
 	printk( "*** in faye_driver_shutdown start ***\n" );
+	printk(  "device is:%s\n", dev_name(dev) );
 	printk( "*** in faye_driver_shutdown end ***\n" );
 }
 
