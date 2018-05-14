@@ -17,6 +17,8 @@ PWD:=$(shell pwd)
 
 all:clean
 	@echo objs=$(usrObjs)
+	$(MAKE) -C device_test/
+	$(MAKE) -C driver_test/
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
 
 .PHONY:clean

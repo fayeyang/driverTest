@@ -12,7 +12,7 @@ extern struct device      faye_busDevice;
 
 void  faye_device_release( struct device *dev ){
 	printk( "### in faye_device_release start ###\n" );
-	printk( "### faye_Device released ### \n" );
+	printk(  "device is:%s\n", dev_name(dev) );
 	printk( "### in faye_device_release end ###\n" );
 }
 

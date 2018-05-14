@@ -31,12 +31,14 @@ static int faye_bus_probe( struct device *dev ){
 /* struct bus_type->remove()函数指针会指向本函数 */
 static int faye_bus_remove( struct device *dev ){
     printk( "=== in faye_bus_remove start ===\n" );
+    printk(  "device is:%s\n", dev_name(dev) );
     printk( "=== in faye_bus_remove end ===\n" );
     return 0;
 }
 
 static void faye_bus_shutdown( struct device *dev ){
     printk( "=== in faye_bus_shutdown start ===\n" );
+    printk(  "device is:%s\n", dev_name(dev) );
     printk( "=== in faye_bus_shutdown end ===\n" );
 }
 
@@ -69,7 +71,9 @@ static BUS_ATTR( faye_bus_attribute_1, S_IRUGO, show_bus_attribute_1, NULL );
 
 /* struct device::void ( *release )( struct device *dev )函数指针会指向本函数 */
 void faye_busDevice_release( struct device *dev ){
-    printk( KERN_DEBUG "faye_busDevice released\n" );
+	printk( "=== in faye_busDevice_release start ===\n" );
+	printk(  "device is:%s\n", dev_name(dev) );
+	printk( "=== in faye_busDevice_release end ===\n" );
 }
 
 /* 用户自定义总线所对应的device对象,每个总线还需要对应1个device对象？？？？ */
