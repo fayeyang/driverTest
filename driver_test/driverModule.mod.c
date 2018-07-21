@@ -21,4 +21,4 @@ __attribute__((section(".modinfo"))) =
 "depends=busModule";
 
 
-MODULE_INFO(srcversion, "9944945EAF37D3B326F014E");
+MODULE_INFO(srcversion, "194191F85F9405AF9E150B4");

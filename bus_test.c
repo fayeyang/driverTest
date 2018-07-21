@@ -67,6 +67,12 @@ static ssize_t show_bus_attribute_1( struct bus_type *bus, char *buf ){
 }
 static BUS_ATTR( faye_bus_attribute_1, S_IRUGO, show_bus_attribute_1, NULL );
 
+/* 定义一个bus_attribute对象,将其封装到attribute_group对象中 */
+
+
+
+
+
 /***************************************************************************************************************/
 
 /* struct device::void ( *release )( struct device *dev )函数指针会指向本函数 */
