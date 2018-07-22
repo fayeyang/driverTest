@@ -42,15 +42,6 @@ static void faye_bus_shutdown( struct device *dev ){
     printk( "=== in faye_bus_shutdown end ===\n" );
 }
 
-/* 用户自定义总线相关bus_type对象 */
-struct bus_type  faye_bus = {
-    .name     = "faye_bus",   /* 总线名，注册总线后，会在/sys/bus/目录下建立该名称的目录 */
-    .match    =  faye_bus_match,
-    .shutdown =  faye_bus_shutdown,
-    .probe    =  faye_bus_probe,
-    .remove   =  faye_bus_remove,
-};
-EXPORT_SYMBOL( faye_bus );
 
 /* 定义1个总线属性对象 */
 static ssize_t show_bus_author( struct bus_type *bus, char *buf ){
@@ -68,10 +59,28 @@ static ssize_t show_bus_attribute_1( struct bus_type *bus, char *buf ){
 static BUS_ATTR( faye_bus_attribute_1, S_IRUGO, show_bus_attribute_1, NULL );
 
 /* 定义一个bus_attribute对象,将其封装到attribute_group对象中 */
+static ssize_t bus_attribute_group_show( struct bus_type *bus, char *buf ){
+	return snprintf( buf, PAGE_SIZE, "%s\n", "bus_attribute_group" );
+}
+static BUS_ATTR( faye_bus_attribute_group, (S_IRUGO | S_IWUSR), bus_attribute_group_show, NULL );
 
+struct attribute_group faye_bus_attrGroup = {
+	.name  = "faye_bus_attGroup_name",
+	.attrs = (struct attribute*[]){ &(bus_attr_faye_bus_attribute_group.attr), NULL },
+};
 
+/************************************************************************************************************/
 
-
+/* 用户自定义总线相关bus_type对象 */
+struct bus_type  faye_bus = {
+    .name     = "faye_bus",   /* 总线名，注册总线后，会在/sys/bus/目录下建立该名称的目录 */
+    .match    =  faye_bus_match,
+    .shutdown =  faye_bus_shutdown,
+    .probe    =  faye_bus_probe,
+    .remove   =  faye_bus_remove,
+    .bus_groups = ( const struct attribute_group*[] ){ &faye_bus_attrGroup, NULL },
+};
+EXPORT_SYMBOL( faye_bus );
 
 /***************************************************************************************************************/
 
