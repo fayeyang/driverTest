@@ -12,6 +12,9 @@ extern void subDevice_exit( void );
 
 char *author = "FayeYang";
 
+/*  */
+char attrBuf[ PAGE_SIZE+1 ] = "attribute of attribute_Group";
+
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
     printk( "=== in faye_bus_match start ===\n" );
@@ -60,9 +63,12 @@ static BUS_ATTR( faye_bus_attribute_1, S_IRUGO, show_bus_attribute_1, NULL );
 
 /* 定义一个bus_attribute对象,将其封装到attribute_group对象中 */
 static ssize_t bus_attribute_group_show( struct bus_type *bus, char *buf ){
-	return snprintf( buf, PAGE_SIZE, "%s\n", "bus_attribute_group" );
+	return snprintf( buf, PAGE_SIZE, "%s\n", attrBuf );
 }
-static BUS_ATTR( faye_bus_attribute_group, (S_IRUGO | S_IWUSR), bus_attribute_group_show, NULL );
+static ssize_t bus_attribute_group_store( struct bus_type *bus, const char *buf, size_t count ){
+	return sprintf( attrBuf, "%s", buf );
+}
+static BUS_ATTR( faye_bus_attribute_group, ( S_IRUSR | S_IWUSR ), bus_attribute_group_show, bus_attribute_group_store );
 
 struct attribute_group faye_bus_attrGroup = {
 	.name  = "faye_bus_attGroup_name",

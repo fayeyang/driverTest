@@ -1,1 +1,0 @@
-cmd_/home/faye/work/work_normal/gcc_test/driverTest/device_test/deviceModule.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/faye/work/work_normal/gcc_test/driverTest/device_test/deviceModule.ko /home/faye/work/work_normal/gcc_test/driverTest/device_test/deviceModule.o /home/faye/work/work_normal/gcc_test/driverTest/device_test/deviceModule.mod.o

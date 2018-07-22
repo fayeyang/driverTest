@@ -23,6 +23,8 @@ all:clean
 
 .PHONY:clean
 clean:
+	$(MAKE) -C device_test/ clean
+	$(MAKE) -C driver_test/ clean
 	@echo objs=$(usrObjs)
 	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order *.symvers
 endif
