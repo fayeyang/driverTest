@@ -71,7 +71,7 @@ static ssize_t bus_attribute_group_store( struct bus_type *bus, const char *buf,
 static BUS_ATTR( faye_bus_attribute_group, ( S_IRUSR | S_IWUSR ), bus_attribute_group_show, bus_attribute_group_store );
 
 struct attribute_group faye_bus_attrGroup = {
-	.name  = "faye_bus_attGroup_name",
+	.name  = "faye_bus_attrGroup_name",
 	.attrs = (struct attribute*[]){ &(bus_attr_faye_bus_attribute_group.attr), NULL },
 };
 

@@ -19,7 +19,7 @@ void  faye_device_release( struct device *dev ){
 	printk( "### in faye_device_release end ###\n" );
 }
 
-/* 定义一个bus_attribute对象,将其封装到attribute_group对象中 */
+/* 定义一个device_attribute对象,将其封装到attribute_group对象中 */
 static ssize_t device_attribute_group_show( struct device *dev, struct device_attribute *attr, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", attrBuf );
 }
@@ -29,7 +29,7 @@ static ssize_t device_attribute_group_store( struct device *dev, struct device_a
 static DEVICE_ATTR( faye_device_attribute_group, ( S_IRUSR | S_IWUSR ), device_attribute_group_show, device_attribute_group_store );
 
 struct attribute_group faye_device_attrGroup = {
-	.name  = "faye_device_attGroup_name",
+	.name  = "faye_device_attrGroup_name",
 	.attrs = (struct attribute*[]){ &(dev_attr_faye_device_attribute_group.attr), NULL },
 };
 
@@ -38,7 +38,7 @@ struct device faye_device = {
 	.bus 		= &faye_bus,
 	.parent		= &faye_busDevice,
 	.release	=  faye_device_release,
-	//.groups     = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
+	.groups     = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
 };
 
 static ssize_t show_faye_device_attr_1( struct device *dev, struct device_attribute *attr, char *buf ){
@@ -61,9 +61,7 @@ static int __init faye_device_init( void ){
 		printk( KERN_DEBUG "Unable to register device\n" );
 		return ret;
 	}
-	
-	device_add_group( &faye_device, &faye_device_attrGroup );
-	
+		
 	if( device_create_file( &faye_device, &dev_attr_faye_device_attr_1 ) ){
 		printk( KERN_DEBUG "Unable to create device attribute file\n" );
 		return ret;

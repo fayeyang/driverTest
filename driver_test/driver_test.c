@@ -9,6 +9,9 @@ MODULE_LICENSE( "GPL" );
 
 extern struct bus_type faye_bus;
 
+/* driver_attribute对象缓冲区 */
+char attrBuf[ PAGE_SIZE+1 ] = "driver attribute of attribute_Group";
+
 char *author = "faye";
 
 int faye_driver_remove( struct device *dev ){
@@ -32,9 +35,24 @@ void faye_driver_shutdown( struct device *dev ){
 	printk( "*** in faye_driver_shutdown end ***\n" );
 }
 
+/* 定义一个device_attribute对象,将其封装到attribute_group对象中 */
+static ssize_t driver_attribute_group_show( struct device_driver *drv, char *buf ){
+	return snprintf( buf, PAGE_SIZE, "%s\n", attrBuf );
+}
+static ssize_t driver_attribute_group_store( struct device_driver *drv, const char *buf, size_t count ){
+	return sprintf( attrBuf, "%s", buf );
+}
+static DRIVER_ATTR( faye_driver_attribute_group, ( S_IRUSR | S_IWUSR ), driver_attribute_group_show, driver_attribute_group_store );
+
+struct attribute_group faye_driver_attrGroup = {
+	.name  = "faye_driver_attrGroup_name",
+	.attrs = (struct attribute*[]){ &(driver_attr_faye_driver_attribute_group.attr), NULL },
+};
+
 struct device_driver faye_device_driver = {
 	.name	    = "faye_device",
 	.bus	    = &faye_bus,
+	.groups     = ( const struct attribute_group*[] ){ &faye_driver_attrGroup, NULL },
 	//.probe	    =  faye_driver_probe,
 	//.remove	    =  faye_driver_remove,
 	//.shutdown   =  faye_driver_shutdown,
