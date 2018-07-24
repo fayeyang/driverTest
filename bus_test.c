@@ -12,8 +12,8 @@ extern void subDevice_exit( void );
 
 char *author = "FayeYang";
 
-/*  */
-char attrBuf[ PAGE_SIZE+1 ] = "attribute of attribute_Group";
+/* bus_attribute对象缓冲区 */
+char attrBuf[ PAGE_SIZE+1 ] = "bus attribute of attribute_Group";
 
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
@@ -71,7 +71,7 @@ static ssize_t bus_attribute_group_store( struct bus_type *bus, const char *buf,
 static BUS_ATTR( faye_bus_attribute_group, ( S_IRUSR | S_IWUSR ), bus_attribute_group_show, bus_attribute_group_store );
 
 struct attribute_group faye_bus_attrGroup = {
-	//.name  = "faye_bus_attGroup_name",
+	.name  = "faye_bus_attGroup_name",
 	.attrs = (struct attribute*[]){ &(bus_attr_faye_bus_attribute_group.attr), NULL },
 };
 
@@ -122,6 +122,8 @@ static int __init faye_bus_init( void ){
     ret = bus_register( &faye_bus );
     if( ret )
         return ret;
+
+	//bus_add_groups( &faye_bus, faye_attrGroup );
 
     /*
      * 向用户自定义总线faye_bus中添加用户自定义的总线属性对象文件，
