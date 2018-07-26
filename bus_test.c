@@ -10,10 +10,13 @@ MODULE_LICENSE( "GPL" );
 extern int subDevice_init( void );
 extern void subDevice_exit( void );
 
-char *author = "FayeYang";
+char author[ PAGE_SIZE + 1 ]        = "FayeYang";
+char bus_attr1Buf[ PAGE_SIZE + 1 ]  = "bus_attribute1 data";
 
 /* bus_attribute对象缓冲区 */
-char attrBuf[ PAGE_SIZE+1 ] = "bus attribute of attribute_Group";
+char attrBuf[ PAGE_SIZE + 1 ]       = "bus attribute_Group data";
+
+char busDev_attrBuf[ PAGE_SIZE +1 ]     = "bus_device_attribute data";
 
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
@@ -45,30 +48,35 @@ static void faye_bus_shutdown( struct device *dev ){
     printk( "=== in faye_bus_shutdown end ===\n" );
 }
 
-
 /* 定义1个总线属性对象 */
-static ssize_t show_bus_author( struct bus_type *bus, char *buf ){
+static ssize_t bus_author_show( struct bus_type *bus, char *buf ){
     return snprintf( buf, PAGE_SIZE, "%s\n", author );
 }
-static BUS_ATTR( faye_bus_author, S_IRUGO, show_bus_author, NULL );  /*
+static ssize_t bus_author_store( struct bus_type *bus, const char *buf, size_t count ){
+    return sprintf( author, "%s", buf );
+}
+static BUS_ATTR( faye_bus_author, (S_IRUGO|S_IWUSR|S_IWGRP), bus_author_show, bus_author_store );  /*
                                     * 关于BUS_ATTR()宏可参考上文中的“bus_attribute数据类型：”部分
                                     * 在本处会生成名为bus_attr_faye_bus_author的bus_attribute类型对象
                                     */
 
 /* 定义1个总线属性对象 */
-static ssize_t show_bus_attribute_1( struct bus_type *bus, char *buf ){
-    return snprintf( buf, PAGE_SIZE, "%s\n", "bus_attribute_1" );
+static ssize_t bus_attr1_show( struct bus_type *bus, char *buf ){
+    return snprintf( buf, PAGE_SIZE, "%s\n", bus_attr1Buf);
 }
-static BUS_ATTR( faye_bus_attribute_1, S_IRUGO, show_bus_attribute_1, NULL );
+static ssize_t bus_attr1_store( struct bus_type *bus, const char *buf, size_t count ){
+    return sprintf( bus_attr1Buf, "%s", buf );
+}
+static BUS_ATTR( faye_bus_attribute1, (S_IRUGO|S_IWUSR|S_IWGRP), bus_attr1_show, bus_attr1_store );
 
-/* 定义一个bus_attribute对象,将其封装到attribute_group对象中 */
+/* 定义一个bus_attribute对象,并将其封装到attribute_group对象中 */
 static ssize_t bus_attribute_group_show( struct bus_type *bus, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", attrBuf );
 }
 static ssize_t bus_attribute_group_store( struct bus_type *bus, const char *buf, size_t count ){
 	return sprintf( attrBuf, "%s", buf );
 }
-static BUS_ATTR( faye_bus_attribute_group, ( S_IRUSR | S_IWUSR ), bus_attribute_group_show, bus_attribute_group_store );
+static BUS_ATTR( faye_bus_attribute_group, (S_IRUGO|S_IWUSR|S_IWGRP), bus_attribute_group_show, bus_attribute_group_store );
 
 struct attribute_group faye_bus_attrGroup = {
 	.name  = "faye_bus_attrGroup_name",
@@ -108,10 +116,13 @@ struct device  faye_busDevice = {
 };
 EXPORT_SYMBOL( faye_busDevice );
 
-static ssize_t show_busDevice_attr( struct device *dev, struct device_attribute *attr, char *buf ){
-    return snprintf( buf, PAGE_SIZE, "%s\n", "faye_busDevice_attribute" );
+static ssize_t busDevice_attr_show( struct device *dev, struct device_attribute *attr, char *buf ){
+    return snprintf( buf, PAGE_SIZE, "%s\n", busDev_attrBuf );
 }
-static DEVICE_ATTR( faye_busDevice_attr, S_IRUGO, show_busDevice_attr, NULL );
+static ssize_t busDevice_attr_store( struct device *dev, struct device_attribute *attr, const char *buf, size_t count ){
+    return sprintf( busDev_attrBuf, "%s", buf );    
+}
+static DEVICE_ATTR( faye_busDevice_attr, (S_IRUGO|S_IWUSR|S_IWGRP), busDevice_attr_show, busDevice_attr_store );
 
 static int __init faye_bus_init( void ){
     int ret;
@@ -131,8 +142,8 @@ static int __init faye_bus_init( void ){
      */
     if( bus_create_file(&faye_bus, &bus_attr_faye_bus_author) )
         printk( KERN_NOTICE "Unable to create author attribute\n" );
-    if( bus_create_file(&faye_bus, &bus_attr_faye_bus_attribute_1) )
-        printk( KERN_NOTICE "Unable to create faye_bus_attribute_1" );
+    if( bus_create_file(&faye_bus, &bus_attr_faye_bus_attribute1) )
+        printk( KERN_NOTICE "Unable to create faye_bus_attribute_1\n" );
 
     printk( "faye_bus register success!\n" );
 
