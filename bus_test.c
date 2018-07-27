@@ -11,41 +11,41 @@ extern int subDevice_init( void );
 extern void subDevice_exit( void );
 
 char author[ PAGE_SIZE + 1 ]        = "FayeYang";
-char bus_attr1Buf[ PAGE_SIZE + 1 ]  = "bus_attribute1 data";
+char bus_attr1_Buf[ PAGE_SIZE + 1 ]  = "bus_attribute1 data";
+char busDev_attr_Buf[ PAGE_SIZE +1 ]     = "bus_device_attribute data";
 
 /* bus_attribute对象缓冲区 */
-char attrBuf[ PAGE_SIZE + 1 ]       = "bus attribute_Group data";
+char bus_attrGroup_Buf[ PAGE_SIZE + 1 ]       = "bus attribute_Group data";
 
-char busDev_attrBuf[ PAGE_SIZE +1 ]     = "bus_device_attribute data";
 
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
-    printk( "=== in faye_bus_match start ===\n" );
+    printk( "=== in faye_bus_match() start ===\n" );
     printk( "device is: %s\n", dev_name(dev) );
     printk( "device driver is: %s\n", drv->name );
-    printk( "=== in faye_bus_match end ===\n" );
+    printk( "=== in faye_bus_match() end ===\n" );
     return !strncmp( dev_name( dev ), drv->name, strlen(drv->name) );
 }
 
 static int faye_bus_probe( struct device *dev ){
-    printk( "=== in faye_bus_probe start ===\n" );
+    printk( "=== in faye_bus_probe() start ===\n" );
     printk(  "device is:%s\n", dev_name(dev) );
-    printk( "=== in faye_bus_probe end ===\n" );
+    printk( "=== in faye_bus_probe() end ===\n" );
     return 0;
 }
 
 /* struct bus_type->remove()函数指针会指向本函数 */
 static int faye_bus_remove( struct device *dev ){
-    printk( "=== in faye_bus_remove start ===\n" );
+    printk( "=== in faye_bus_remove() start ===\n" );
     printk(  "device is:%s\n", dev_name(dev) );
-    printk( "=== in faye_bus_remove end ===\n" );
+    printk( "=== in faye_bus_remove() end ===\n" );
     return 0;
 }
 
 static void faye_bus_shutdown( struct device *dev ){
-    printk( "=== in faye_bus_shutdown start ===\n" );
+    printk( "=== in faye_bus_shutdown() start ===\n" );
     printk(  "device is:%s\n", dev_name(dev) );
-    printk( "=== in faye_bus_shutdown end ===\n" );
+    printk( "=== in faye_bus_shutdown() end ===\n" );
 }
 
 /* 定义1个总线属性对象 */
@@ -62,19 +62,19 @@ static BUS_ATTR( faye_bus_author, (S_IRUGO|S_IWUSR|S_IWGRP), bus_author_show, bu
 
 /* 定义1个总线属性对象 */
 static ssize_t bus_attr1_show( struct bus_type *bus, char *buf ){
-    return snprintf( buf, PAGE_SIZE, "%s\n", bus_attr1Buf);
+    return snprintf( buf, PAGE_SIZE, "%s\n", bus_attr1_Buf);
 }
 static ssize_t bus_attr1_store( struct bus_type *bus, const char *buf, size_t count ){
-    return sprintf( bus_attr1Buf, "%s", buf );
+    return sprintf( bus_attr1_Buf, "%s", buf );
 }
 static BUS_ATTR( faye_bus_attribute1, (S_IRUGO|S_IWUSR|S_IWGRP), bus_attr1_show, bus_attr1_store );
 
 /* 定义一个bus_attribute对象,并将其封装到attribute_group对象中 */
 static ssize_t bus_attribute_group_show( struct bus_type *bus, char *buf ){
-	return snprintf( buf, PAGE_SIZE, "%s\n", attrBuf );
+	return snprintf( buf, PAGE_SIZE, "%s\n", bus_attrGroup_Buf );
 }
 static ssize_t bus_attribute_group_store( struct bus_type *bus, const char *buf, size_t count ){
-	return sprintf( attrBuf, "%s", buf );
+	return sprintf( bus_attrGroup_Buf, "%s", buf );
 }
 static BUS_ATTR( faye_bus_attribute_group, (S_IRUGO|S_IWUSR|S_IWGRP), bus_attribute_group_show, bus_attribute_group_store );
 
@@ -100,9 +100,9 @@ EXPORT_SYMBOL( faye_bus );
 
 /* struct device::void ( *release )( struct device *dev )函数指针会指向本函数 */
 void faye_busDevice_release( struct device *dev ){
-	printk( "=== in faye_busDevice_release start ===\n" );
+	printk( "=== in faye_busDevice_release() start ===\n" );
 	printk(  "device is:%s\n", dev_name(dev) );
-	printk( "=== in faye_busDevice_release end ===\n" );
+	printk( "=== in faye_busDevice_release() end ===\n" );
 }
 
 /* 用户自定义总线所对应的device对象,每个总线还需要对应1个device对象？？？？ */
@@ -117,17 +117,17 @@ struct device  faye_busDevice = {
 EXPORT_SYMBOL( faye_busDevice );
 
 static ssize_t busDevice_attr_show( struct device *dev, struct device_attribute *attr, char *buf ){
-    return snprintf( buf, PAGE_SIZE, "%s\n", busDev_attrBuf );
+    return snprintf( buf, PAGE_SIZE, "%s\n", busDev_attr_Buf );
 }
 static ssize_t busDevice_attr_store( struct device *dev, struct device_attribute *attr, const char *buf, size_t count ){
-    return sprintf( busDev_attrBuf, "%s", buf );    
+    return sprintf( busDev_attr_Buf, "%s", buf );    
 }
 static DEVICE_ATTR( faye_busDevice_attr, (S_IRUGO|S_IWUSR|S_IWGRP), busDevice_attr_show, busDevice_attr_store );
 
 static int __init faye_bus_init( void ){
     int ret;
 
-    printk( "/**** faye_bus_init ***************************************/\n" );
+    printk( "/**** faye_bus_init() start ***************************************/\n" );
 
     /* 向内核注册用户自定义总线，注册成功后，会在/sys/bus/目录下建立以faye_bus.name命名的目录 */
     ret = bus_register( &faye_bus );
@@ -160,11 +160,13 @@ static int __init faye_bus_init( void ){
 
 	//subDevice_init();
 
-    printk( "/**** faye_bus_init ***************************************/\n" );
+    printk( "/**** faye_bus_init() end ***************************************/\n" );
     return ret;
 }
 
 static void __exit faye_bus_exit( void ){
+
+    printk( "/**** faye_bus_exit() start ***************************************/\n" );
 
     //subDevice_exit();
  
@@ -174,7 +176,8 @@ static void __exit faye_bus_exit( void ){
             * 卸载用户自定义设备，若卸载成功,则会删除/sys/devices/目录下以faye_busDevice.initname命名的目录
             */
     bus_unregister( &faye_bus );  /* 卸载用户自定义总线，若卸载成功，则会删除/sys/bus/目录下以faye_bus.name命名的目录 */
-    printk( "faye_bus exit success\n" );    
+
+    printk( "/**** faye_bus_exit() end ***************************************/\n" );
 }
 
 module_init( faye_bus_init );
