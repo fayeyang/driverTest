@@ -1,8 +1,8 @@
 ifneq ($(KERNELRELEASE),)
 #aaobjs:=$(subst $(usrPwd),,$(aaobjs))
 #aaobjs:=$(notdir $(aaobjs))
-obj-m:=busModule.o
-busModule-objs:=$(usrObjs)
+obj-m:=classModule.o
+classModule-objs:=$(usrObjs)
 else
 #usrPwd:=/home/faye/work/work_normal/gcc_test/device_driver_test
 usrSrc:=$(wildcard *.c)
@@ -16,19 +16,14 @@ KERNELDIR?=/lib/modules/$(shell uname -r)/build
 PWD:=$(shell pwd)
 
 all:clean
-	$(MAKE) -C device_test/
-	$(MAKE) -C driver_test/
-	$(MAKE) -C class_test/
 	@echo objs=$(usrObjs)
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
 
 .PHONY:clean
 clean:
-	$(MAKE) -C device_test/ clean
-	$(MAKE) -C driver_test/ clean
-	$(MAKE) -C class_test/ clean
 	@echo objs=$(usrObjs)
-	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order *.symvers
+	#rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order *.symvers
+	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order
 endif
 
 
