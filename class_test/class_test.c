@@ -4,6 +4,9 @@
 #include  <linux/string.h>
 #include  <linux/device.h>
 
+MODULE_AUTHOR( "faye" );
+MODULE_LICENSE( "GPL" );    /* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */
+
 char author[ PAGE_SIZE+1 ] = "FayeYang";
 char class_attr_Buf[ PAGE_SIZE+1 ] = "faye_class_attribute data";
 char class_attrGroup_Buf[ PAGE_SIZE+1 ] = "faye_class_attribute_group data";
@@ -21,13 +24,13 @@ void faye_class_dev_release( struct device *dev ){
 	printk( "~~~~~~~ in faye_class_dev_release() end ~~~~~~~\n" );
 }
 
-static ssize_t class_attrGroup_show( struct class *class, struct class_attribute *attr, char *buf ){
+static ssize_t faye_class_attrGroup_show( struct class *class, struct class_attribute *attr, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", class_attrGroup_Buf );
 }
-static ssize_t class_attrGroup_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
+static ssize_t faye_class_attrGroup_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
 	return sprintf( class_attrGroup_Buf, "%s", buf );	
 }
-static CLASS_ATTR( faye_class_attrGroup, (S_IRUGO|S_IWUSR|S_IWGRP), class_attrGroup_show, class_attrGroup_store );
+static CLASS_ATTR_RW( faye_class_attrGroup );
 
 struct attribute_group faye_class_attrGroup = {
 	.name = "faye_class_attrGroup",
@@ -42,13 +45,13 @@ struct class faye_class = {
 };
 
 /* 定义一个class_attribute对象 */
-static ssize_t class_author_show( struct class *class, struct class_attribute *attr, char *buf ){
+static ssize_t faye_class_author_show( struct class *class, struct class_attribute *attr, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", author );
 }
-static ssize_t class_author_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
+static ssize_t faye_class_author_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
 	return sprintf( author, "%s", buf );	
 }
-static CLASS_ATTR( faye_class_author, (S_IRUGO|S_IWUSR|S_IWGRP), class_author_show, class_author_store );
+static CLASS_ATTR_RW( faye_class_author );
 
 /* 定义一个class_attribute对象 */
 static ssize_t faye_class_attr_show( struct class *class, struct class_attribute *attr, char *buf ){
@@ -57,7 +60,7 @@ static ssize_t faye_class_attr_show( struct class *class, struct class_attribute
 static ssize_t faye_class_attr_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
 	return sprintf( class_attr_Buf, "%s", buf );	
 }
-static CLASS_ATTR( faye_class_attr, (S_IRUGO|S_IWUSR|S_IWGRP), faye_class_attr_show, faye_class_attr_store );
+static CLASS_ATTR_RW( faye_class_attr );
 
 static int __init faye_class_init( void ){
 	

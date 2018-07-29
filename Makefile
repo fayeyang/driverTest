@@ -28,7 +28,7 @@ clean:
 	$(MAKE) -C driver_test/ clean
 	$(MAKE) -C class_test/ clean
 	@echo objs=$(usrObjs)
-	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order *.symvers
+	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order *.symvers .*.mk
 endif
 
 

@@ -23,7 +23,7 @@ all:clean
 clean:
 	@echo objs=$(usrObjs)
 	#rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order *.symvers
-	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order
+	rm -rf *.o *.ko *.mod.c *.mod.o .tmp_versions/ .*.cmd *.order .*.mk
 endif
 
 

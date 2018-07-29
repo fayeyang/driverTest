@@ -5,7 +5,7 @@
 #include  <linux/device.h>
 
 MODULE_AUTHOR( "faye" );
-MODULE_LICENSE( "GPL" );
+MODULE_LICENSE( "GPL" );    /* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */
 
 extern struct bus_type faye_bus;
 
@@ -38,13 +38,13 @@ void faye_driver_shutdown( struct device *dev ){
 }
 
 /* 定义一个device_attribute对象,将其封装到attribute_group对象中 */
-static ssize_t driver_attribute_group_show( struct device_driver *drv, char *buf ){
+static ssize_t faye_driver_attribute_group_show( struct device_driver *drv, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", driver_attrGroup_Buf );
 }
-static ssize_t driver_attribute_group_store( struct device_driver *drv, const char *buf, size_t count ){
+static ssize_t faye_driver_attribute_group_store( struct device_driver *drv, const char *buf, size_t count ){
 	return sprintf( driver_attrGroup_Buf, "%s", buf );
 }
-static DRIVER_ATTR( faye_driver_attribute_group, (S_IRUGO|S_IWUSR|S_IWGRP), driver_attribute_group_show, driver_attribute_group_store );
+static DRIVER_ATTR_RW( faye_driver_attribute_group );
 
 struct attribute_group faye_driver_attrGroup = {
 	.name  = "faye_driver_attrGroup_name",
@@ -66,7 +66,7 @@ static ssize_t faye_driver_author_show( struct device_driver *driver, char *buf 
 static ssize_t faye_driver_author_store( struct device_driver *driver, const char *buf, size_t count ){
 	return sprintf( author, "%s", buf );
 }
-static DRIVER_ATTR( faye_driver_author, (S_IRUGO|S_IWUSR|S_IWGRP), faye_driver_author_show, faye_driver_author_store );
+static DRIVER_ATTR_RW( faye_driver_author );
 
 static ssize_t faye_driver_attr1_show( struct device_driver *driver, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", driver_attr1_Buf );
@@ -74,7 +74,7 @@ static ssize_t faye_driver_attr1_show( struct device_driver *driver, char *buf )
 static ssize_t faye_driver_attr1_store( struct device_driver *driver, const char *buf, size_t count ){
 	return sprintf( driver_attr1_Buf, "%s", buf );
 }
-static DRIVER_ATTR( faye_device_driver_attr1, (S_IRUGO|S_IWUSR|S_IWGRP), faye_driver_attr1_show, faye_driver_attr1_store );
+static DRIVER_ATTR_RW( faye_driver_attr1 );
 
 static ssize_t faye_driver_attr2_show( struct device_driver *driver, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", driver_attr2_Buf );
@@ -82,7 +82,7 @@ static ssize_t faye_driver_attr2_show( struct device_driver *driver, char *buf )
 static ssize_t faye_driver_attr2_store( struct device_driver *driver, const char *buf, size_t count ){
 	return sprintf( driver_attr2_Buf, "%s", buf );
 }
-static DRIVER_ATTR( faye_device_driver_attr2, (S_IRUGO|S_IWUSR|S_IWGRP), faye_driver_attr2_show, faye_driver_attr2_store );
+static DRIVER_ATTR_RW( faye_driver_attr2 );
 
 static int __init faye_driver_init( void ){
 	int ret;
@@ -99,11 +99,11 @@ static int __init faye_driver_init( void ){
 		return ret;
 	}
 	
-	if( driver_create_file( &faye_device_driver, &driver_attr_faye_device_driver_attr1 ) ){
+	if( driver_create_file( &faye_device_driver, &driver_attr_faye_driver_attr1 ) ){
 		printk( "unable create faye device driver attribute1 file\n" );
 	}
 	
-	if( driver_create_file( &faye_device_driver, &driver_attr_faye_device_driver_attr2 ) ){
+	if( driver_create_file( &faye_device_driver, &driver_attr_faye_driver_attr2 ) ){
 		printk( "unable create faye device driver attribute2 file\n" );
 	}
 
