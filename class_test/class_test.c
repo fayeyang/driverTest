@@ -21,6 +21,26 @@ void faye_class_dev_release( struct device *dev ){
 	printk( "~~~~~~~ in faye_class_dev_release() end ~~~~~~~\n" );
 }
 
+static ssize_t class_attrGroup_show( struct class *class, struct class_attribute *attr, char *buf ){
+	return snprintf( buf, PAGE_SIZE, "%s\n", class_attrGroup_Buf );
+}
+static ssize_t class_attrGroup_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
+	return sprintf( class_attrGroup_Buf, "%s", buf );	
+}
+static CLASS_ATTR( faye_class_attrGroup, (S_IRUGO|S_IWUSR|S_IWGRP), class_attrGroup_show, class_attrGroup_store );
+
+struct attribute_group faye_class_attrGroup = {
+	.name = "faye_class_attrGroup",
+	.attrs = (struct attribute*[]){ &(class_attr_faye_class_attrGroup.attr), NULL },
+};
+
+struct class faye_class = {
+	.name         = "faye_class",
+	.dev_uevent   =  faye_class_dev_uevent,
+	.dev_release  =  faye_class_dev_release,
+	.dev_groups = (const struct attribute_group*[]){ &faye_class_attrGroup, NULL },
+};
+
 /* 定义一个class_attribute对象 */
 static ssize_t class_author_show( struct class *class, struct class_attribute *attr, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", author );
@@ -28,15 +48,54 @@ static ssize_t class_author_show( struct class *class, struct class_attribute *a
 static ssize_t class_author_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
 	return sprintf( author, "%s", buf );	
 }
-static CLASS_ATTR( faye_class_author, 0x06, class_author_show, class_author_store );
-#define __ATTR_RW(_name) __ATTR(_name, 0644, _name##_show, _name##_store)
+static CLASS_ATTR( faye_class_author, (S_IRUGO|S_IWUSR|S_IWGRP), class_author_show, class_author_store );
+
+/* 定义一个class_attribute对象 */
+static ssize_t faye_class_attr_show( struct class *class, struct class_attribute *attr, char *buf ){
+	return snprintf( buf, PAGE_SIZE, "%s\n", class_attr_Buf );
+}
+static ssize_t faye_class_attr_store( struct class *class, struct class_attribute *attr, const char *buf, size_t count ){
+	return sprintf( class_attr_Buf, "%s", buf );	
+}
+static CLASS_ATTR( faye_class_attr, (S_IRUGO|S_IWUSR|S_IWGRP), faye_class_attr_show, faye_class_attr_store );
 
 static int __init faye_class_init( void ){
+	
+	int tmp;
+
+    printk( "/**** faye_class_init() start ***************************************/\n" );
+	
+	tmp = 0;
+	tmp = class_register( &faye_class );
+	if( tmp ){
+		printk( KERN_DEBUG "Unable to register faye_class\n" );
+		return tmp;
+	}
+
+
+	if( class_create_file( &faye_class, &class_attr_faye_class_author ) ){
+		printk( KERN_DEBUG "Unable to create faye_class author file\n" );
+		return tmp;
+	}
+
+	if( class_create_file( &faye_class, &class_attr_faye_class_attr ) ){
+		printk( KERN_DEBUG "Unable to create faye_class attribute file\n" );
+		return tmp;
+	}
+
+	printk( KERN_DEBUG "faye_class register success\n" );
+    printk( "/**** faye_class_init() end ***************************************/\n" );
+
 	return 0;
 }
 
 static void __init faye_class_exit( void ){
+	printk( "/**** faye_class_exit() start ***************************************/\n" );
 	
+	class_unregister( &faye_class );
+
+	printk( "faye_class exit success!\n" );
+	printk( "/**** faye_class_exit() end ***************************************/\n" );
 }
 
 module_init( faye_class_init );

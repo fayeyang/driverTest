@@ -80,18 +80,18 @@ static int __init faye_device_init( void ){
 		printk( KERN_DEBUG "Unable to create device attribute file\n" );
 		return ret;
 	}
-	
+
 	printk( KERN_DEBUG "faye_device register success\n" );
 	printk( "/**** faye_device_init end ***************************************/\n" );
 	return 0;
 }
 
 static void __exit faye_device_exit( void ){
-	printk( "/**** faye_device_exit start ***************************************/\n" );
+	printk( "/**** faye_device_exit() start ***************************************/\n" );
 
 	device_unregister( &faye_device );
 	printk( "faye_device exit success!\n" );
-	printk( "/**** faye_device_exit end ***************************************/\n" );
+	printk( "/**** faye_device_exit() end ***************************************/\n" );
 }
 
 module_init( faye_device_init );
