@@ -7,12 +7,11 @@
 MODULE_AUTHOR( "faye" );
 MODULE_LICENSE( "GPL" );  /* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */
 
-extern int subDevice_init( void );
-extern void subDevice_exit( void );
+extern struct class faye_class;
 
-char author[ PAGE_SIZE + 1 ]        = "FayeYang";
-char bus_attr1_Buf[ PAGE_SIZE + 1 ]  = "bus_attribute1 data";
-char busDev_attr_Buf[ PAGE_SIZE +1 ]     = "bus_device_attribute data";
+char author[ PAGE_SIZE + 1 ]			= "FayeYang";
+char bus_attr1_Buf[ PAGE_SIZE + 1 ]		= "bus_attribute1 data";
+char busDev_attr_Buf[ PAGE_SIZE +1 ]	= "bus_device_attribute data";
 
 /* bus_attribute对象缓冲区 */
 char bus_attrGroup_Buf[ PAGE_SIZE + 1 ]       = "bus attribute_Group data";
@@ -113,6 +112,7 @@ struct device  faye_busDevice = {
                         * 下建立到/sys/devices/faye_busDevice/设备目录的符号链接文件
                         */
     .release    =  faye_busDevice_release,
+    //.class		= &faye_class,
 };
 EXPORT_SYMBOL( faye_busDevice );
 
@@ -158,8 +158,6 @@ static int __init faye_bus_init( void ){
         printk( KERN_NOTICE "Unable to create faye_device_attr" );
     printk( "faye_busDevice register success!\n" );
 
-	//subDevice_init();
-
     printk( "/**** faye_bus_init() end ***************************************/\n" );
     return ret;
 }
@@ -167,8 +165,6 @@ static int __init faye_bus_init( void ){
 static void __exit faye_bus_exit( void ){
 
     printk( "/**** faye_bus_exit() start ***************************************/\n" );
-
-    //subDevice_exit();
  
     /* 注意卸载顺序,先卸载总线下设备,再卸载总线! */
 

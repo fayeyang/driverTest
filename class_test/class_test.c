@@ -41,8 +41,9 @@ struct class faye_class = {
 	.name         = "faye_class",
 	.dev_uevent   =  faye_class_dev_uevent,
 	.dev_release  =  faye_class_dev_release,
-	.dev_groups = (const struct attribute_group*[]){ &faye_class_attrGroup, NULL },
+	.dev_groups   = (const struct attribute_group*[]){ &faye_class_attrGroup, NULL },
 };
+EXPORT_SYMBOL( faye_class );
 
 /* 定义一个class_attribute对象 */
 static ssize_t faye_class_author_show( struct class *class, struct class_attribute *attr, char *buf ){
@@ -92,7 +93,7 @@ static int __init faye_class_init( void ){
 	return 0;
 }
 
-static void __init faye_class_exit( void ){
+static void __exit faye_class_exit( void ){
 	printk( "/**** faye_class_exit() start ***************************************/\n" );
 	
 	class_unregister( &faye_class );

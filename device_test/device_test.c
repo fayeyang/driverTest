@@ -7,8 +7,10 @@
 MODULE_AUTHOR( "faye" );
 MODULE_LICENSE( "GPL" );    /* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */
 
-extern struct bus_type    faye_bus;
-extern struct device      faye_busDevice;
+extern struct bus_type   faye_bus;
+extern struct device     faye_busDevice;
+
+extern struct class      faye_class;
 
 /* device_attribute对象缓冲区 */
 char dev_attr1_Buf[ PAGE_SIZE+1 ] = "device attribute 1 data";
@@ -38,10 +40,11 @@ struct attribute_group faye_device_attrGroup = {
 
 struct device faye_device = {
 	.init_name	= "faye_device",
-	.bus 		= &faye_bus,
+	//.bus 		= &faye_bus,
 	.parent		= &faye_busDevice,
 	.release	=  faye_device_release,
 	.groups     = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
+	.class		= &faye_class,
 };
 
 static ssize_t faye_device_attr1_show( struct device *dev, struct device_attribute *attr, char *buf ){
