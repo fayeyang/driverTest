@@ -1,2 +1,3 @@
 0x25f7d3d9	faye_busDevice	/home/faye/work/work_normal/gcc_test/device_driver_test/busModule	EXPORT_SYMBOL
 0x775b89d5	faye_bus	/home/faye/work/work_normal/gcc_test/device_driver_test/busModule	EXPORT_SYMBOL
+0x22d78e0c	faye_class	/home/faye/work/work_normal/gcc_test/device_driver_test/class_test/classModule	EXPORT_SYMBOL

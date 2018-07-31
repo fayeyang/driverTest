@@ -16,7 +16,6 @@ char busDev_attr_Buf[ PAGE_SIZE +1 ]	= "bus_device_attribute data";
 /* bus_attribute对象缓冲区 */
 char bus_attrGroup_Buf[ PAGE_SIZE + 1 ]       = "bus attribute_Group data";
 
-
 /* struct bus_type->match()函数指针会指向本函数 */
 static int faye_bus_match( struct device *dev, struct device_driver *drv ){
     printk( "=== in faye_bus_match() start ===\n" );
@@ -24,6 +23,13 @@ static int faye_bus_match( struct device *dev, struct device_driver *drv ){
     printk( "device driver is: %s\n", drv->name );
     printk( "=== in faye_bus_match() end ===\n" );
     return !strncmp( dev_name( dev ), drv->name, strlen(drv->name) );
+}
+
+static int faye_bus_uevent( struct device *dev, struct kobj_uevent_env *env ){
+    printk( "=== in faye_bus_uevent() start ===\n" );
+    printk( "device is: %s\n", dev_name(dev) );
+    printk( "=== in faye_bus_uevent() end ===\n" );
+    return 0;
 }
 
 static int faye_bus_probe( struct device *dev ){
@@ -88,6 +94,7 @@ struct attribute_group faye_bus_attrGroup = {
 struct bus_type  faye_bus = {
     .name     = "faye_bus",   /* 总线名，注册总线后，会在/sys/bus/目录下建立该名称的目录 */
     .match    =  faye_bus_match,
+    .uevent   =  faye_bus_uevent,
     .shutdown =  faye_bus_shutdown,
     .probe    =  faye_bus_probe,
     .remove   =  faye_bus_remove,

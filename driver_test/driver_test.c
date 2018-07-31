@@ -113,10 +113,10 @@ static int __init faye_driver_init( void ){
 }
 
 static void __exit faye_driver_exit( void ){
-	printk( "/**** faye_driver_init() start ***************************************/\n" );
+	printk( "/**** faye_driver_exit() start ***************************************/\n" );
 	driver_unregister( &faye_device_driver );
 	printk( "faye_device_driver exit success!\n" );
-	printk( "/**** faye_driver_init() end ***************************************/\n" );
+	printk( "/**** faye_driver_exit() end ***************************************/\n" );
 }
 
 module_init( faye_driver_init );
