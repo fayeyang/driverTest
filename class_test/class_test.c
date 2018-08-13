@@ -18,6 +18,12 @@ static int faye_class_dev_uevent( struct device *dev, struct kobj_uevent_env *en
 	return 0;
 }
 
+void faye_class_cls_release( struct class *cls ){
+	printk( "~~~~~~~ in faye_class_cls_release() start ~~~~~~~\n" );
+	printk( "class is: %s\n", cls->name );
+	printk( "~~~~~~~ in faye_class_cls_release() end ~~~~~~~\n" );
+}
+
 void faye_class_dev_release( struct device *dev ){
 	printk( "~~~~~~~ in faye_class_dev_release() start ~~~~~~~\n" );
 	printk( "device is: %s\n", dev_name(dev) );
@@ -40,6 +46,7 @@ struct attribute_group faye_class_attrGroup = {
 struct class faye_class = {
 	.name         = "faye_class",
 	.dev_uevent   =  faye_class_dev_uevent,
+	.class_release = faye_class_cls_release,
 	.dev_release  =  faye_class_dev_release,
 	.dev_groups   = (const struct attribute_group*[]){ &faye_class_attrGroup, NULL },
 };
