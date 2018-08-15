@@ -180,13 +180,7 @@ static void __exit faye_bus_exit( void ){
             */
     
     bus_unregister( &faye_bus );  /* 卸载用户自定义总线，若卸载成功，则会删除/sys/bus/目录下以faye_bus.name命名的目录 */
-
-	if( faye_bus.p != NULL ){
-    	printk( "bus_put() does't called!\n" );
-  	}  	
-  	if( faye_bus.p == NULL ){
-    	printk( "bus_put() has called!\n" );
-  	}  	
+	
     printk( "/**** faye_bus_exit() end ***************************************/\n" );
   
 }

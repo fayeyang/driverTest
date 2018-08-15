@@ -40,11 +40,19 @@ struct attribute_group faye_device_attrGroup = {
 
 struct device faye_device = {
 	.init_name	= "faye_device",
-	//.bus 		= &faye_bus,
+	.bus 		= &faye_bus,
 	.parent		= &faye_busDevice,
 	.release	=  faye_device_release,
 	.groups     = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
-	.class		= &faye_class,
+	//.class		= &faye_class,
+};
+
+struct device faye_device_class = {
+    .init_name = "faye_device_class",
+    .parent    = &faye_busDevice,
+    .release   = &faye_device_release, 
+    .groups    = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
+	.class     = &faye_class,
 };
 
 static ssize_t faye_device_attr1_show( struct device *dev, struct device_attribute *attr, char *buf ){
@@ -70,10 +78,10 @@ static int __init faye_device_init( void ){
 
 	ret = device_register( &faye_device );
 	if( ret ){
-		printk( KERN_DEBUG "Unable to register device\n" );
+		printk( KERN_DEBUG "Unable to register faye_device\n" );
 		return ret;
 	}
-		
+
 	if( device_create_file( &faye_device, &dev_attr_faye_device_attr1 ) ){
 		printk( KERN_DEBUG "Unable to create device attribute file\n" );
 		return ret;
@@ -85,6 +93,14 @@ static int __init faye_device_init( void ){
 	}
 
 	printk( KERN_DEBUG "faye_device register success\n" );
+	
+	ret = device_register( &faye_device_class );
+	if( ret ){
+		printk( KERN_DEBUG "Unable to register faye_device_class\n" );
+		return ret;
+	}
+	printk( KERN_DEBUG "faye_device_class register success\n" );
+	
 	printk( "/**** faye_device_init end ***************************************/\n" );
 	return 0;
 }
@@ -94,6 +110,10 @@ static void __exit faye_device_exit( void ){
 
 	device_unregister( &faye_device );
 	printk( "faye_device exit success!\n" );
+	
+	device_unregister( &faye_device_class );
+	printk( "faye_device_class exit success!\n" );
+	
 	printk( "/**** faye_device_exit() end ***************************************/\n" );
 }
 
