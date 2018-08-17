@@ -9,6 +9,8 @@ MODULE_LICENSE( "GPL" );  /* 注意,本行不可省略,否则即使能成功编�
 
 extern struct class faye_class;
 
+struct device faye_busDevice;
+
 char author[ PAGE_SIZE + 1 ]			= "FayeYang";
 char bus_attr1_Buf[ PAGE_SIZE + 1 ]		= "bus_attribute1 data";
 char busDev_attr_Buf[ PAGE_SIZE +1 ]	= "bus_device_attribute data";
@@ -93,6 +95,7 @@ struct attribute_group faye_bus_attrGroup = {
 /* 用户自定义总线相关bus_type对象 */
 struct bus_type  faye_bus = {
     .name     = "faye_bus",   /* 总线名，注册总线后，会在/sys/bus/目录下建立该名称的目录 */
+    //.dev_root = &faye_busDevice,
     .match    =  faye_bus_match,
     .uevent   =  faye_bus_uevent,
     .shutdown =  faye_bus_shutdown,
@@ -154,6 +157,7 @@ static int __init faye_bus_init( void ){
 
     printk( "faye_bus register success!\n" );
 
+#if 1
     /*
      * 向内核注册用户自定义设备,faye_busDevice是1个device对象，每个总线还需要对应1个device对象？？？？
      * 注册成功后，会在/sys/devices/目录下建立以faye_busDevice.init_name命名的目录
@@ -164,6 +168,9 @@ static int __init faye_bus_init( void ){
     if( device_create_file( &faye_busDevice, &dev_attr_faye_busDevice_attr ) )
         printk( KERN_NOTICE "Unable to create faye_device_attr" );
     printk( "faye_busDevice register success!\n" );
+#endif
+
+    faye_bus.dev_root = &faye_busDevice;
 
     printk( "/**** faye_bus_init() end ***************************************/\n" );
     return ret;
@@ -175,10 +182,12 @@ static void __exit faye_bus_exit( void ){
  
     /* 注意卸载顺序,先卸载总线下设备,再卸载总线! */
 
+#if 0
     device_unregister( &faye_busDevice );       /*
             * 卸载用户自定义设备，若卸载成功,则会删除/sys/devices/目录下以faye_busDevice.initname命名的目录
             */
-    
+#endif
+
     bus_unregister( &faye_bus );  /* 卸载用户自定义总线，若卸载成功，则会删除/sys/bus/目录下以faye_bus.name命名的目录 */
 	
     printk( "/**** faye_bus_exit() end ***************************************/\n" );
