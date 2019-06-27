@@ -29,6 +29,7 @@ void faye_class_dev_release( struct device *dev ){
 	printk( "device is: %s\n", dev_name(dev) );
 	printk( "~~~~~~~ in faye_class_dev_release() end ~~~~~~~\n" );
 }
+EXPORT_SYMBOL( faye_class_dev_release );
 
 static ssize_t faye_class_attrGroup_show( struct class *class, struct class_attribute *attr, char *buf ){
 	return snprintf( buf, PAGE_SIZE, "%s\n", class_attrGroup_Buf );

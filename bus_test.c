@@ -163,7 +163,7 @@ static int __init faye_bus_init( void ){
      * 注册成功后，会在/sys/devices/目录下建立以faye_busDevice.init_name命名的目录
      */
     if( device_register( &faye_busDevice ) )
-        printk( KERN_NOTICE "Fail to register device\n" );
+        printk( KERN_NOTICE "Fail to register faye_busDevice\n" );
 
     if( device_create_file( &faye_busDevice, &dev_attr_faye_busDevice_attr ) )
         printk( KERN_NOTICE "Unable to create faye_device_attr" );

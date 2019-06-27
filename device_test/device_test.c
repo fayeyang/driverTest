@@ -11,6 +11,7 @@ extern struct bus_type   faye_bus;
 extern struct device     faye_busDevice;
 
 extern struct class      faye_class;
+extern void faye_class_dev_release( struct device *dev );
 
 /* device_attribute对象缓冲区 */
 char dev_attr1_Buf[ PAGE_SIZE+1 ] = "device attribute 1 data";
@@ -50,7 +51,7 @@ struct device faye_device = {
 struct device faye_device_class = {
     .init_name = "faye_device_class",
     .parent    = &faye_busDevice,
-    .release   = &faye_device_release, 
+    .release   = &faye_class_dev_release, 
     .groups    = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
 	.class     = &faye_class,
 };
