@@ -3,6 +3,8 @@
 #include  <linux/init.h>
 #include  <linux/string.h>
 #include  <linux/device.h>
+//#include  <asm/uaccess.h>
+//#include  <linux/uaccess.h>
 
 MODULE_AUTHOR( "faye" );
 MODULE_LICENSE( "GPL" );    /* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */

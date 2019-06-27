@@ -1,2 +1,2 @@
-0xc7fdbf46	faye_busDevice	/home/faye/work/work_normal/gcc_test/driverTest/busModule	EXPORT_SYMBOL
-0x30aab688	faye_bus	/home/faye/work/work_normal/gcc_test/driverTest/busModule	EXPORT_SYMBOL
+0xc7fdbf46	faye_busDevice	/home/faye/work/work_normal/gcc_test/device_driver_test/busModule	EXPORT_SYMBOL
+0x30aab688	faye_bus	/home/faye/work/work_normal/gcc_test/device_driver_test/busModule	EXPORT_SYMBOL
