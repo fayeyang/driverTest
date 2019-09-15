@@ -7,7 +7,9 @@
 //#include  <linux/uaccess.h>
 
 MODULE_AUTHOR( "faye" );
-MODULE_LICENSE( "GPL" );    /* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */
+MODULE_LICENSE( "GPL" );    /* 
+			* 注意,本行不可省略,否则即使能成功编译,但在加载本模块时,
+			* 会提示"Unknown symbol in module",并会在dmesg命令中给出所缺少的符号 */
 
 extern struct bus_type faye_bus;
 
