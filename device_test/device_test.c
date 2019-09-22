@@ -19,7 +19,14 @@ char dev_attr2_Buf[ PAGE_SIZE+1 ] = "device attribute 2 data";
 
 char dev_attrGroup_Buf[ PAGE_SIZE+1 ] = "device attribute group data";
 
-char subDev_attr_Buf[ PAGE_SIZE+1 ] = "sudDevice attribute data";
+char subDev_attr_Buf[ PAGE_SIZE+1 ]   = "sudDevice attribute data";
+
+struct device faye_device_class = {
+    .init_name = "faye_device_class",
+    .class     = &faye_class,
+    .parent    = &faye_busDevice,
+    .release   = &faye_class_dev_release, 
+};
 
 void  faye_device_release( struct device *dev ){
     printk( "### in faye_device_release() start ###\n" );
@@ -50,21 +57,13 @@ struct attribute_group faye_device_attrGroup = {
 struct device faye_device = {
     .init_name  = "faye_device",
     .bus        = &faye_bus,
-    //.parent       = &faye_busDevice,
+    .parent     = &faye_busDevice,
             /* 若未设置.parent字段，但其所属总线的bus.dev_root字段被赋值，
              * 则本device对象会成为dev_root的子设备
              * 可参考本文中的“bus_type数据结构：”部分 */
     .release    =  faye_device_release,
     .groups     = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
     //.class        = &faye_class,
-};
-
-struct device faye_device_class = {
-    .init_name = "faye_device_class",
-    .parent    = &faye_busDevice,
-    .release   = &faye_class_dev_release, 
-    .groups    = ( const struct attribute_group*[] ){ &faye_device_attrGroup, NULL },
-    .class     = &faye_class,
 };
 
 static ssize_t faye_device_attr1_show( struct device *dev, struct device_attribute *attr, char *buf ){
@@ -85,7 +84,7 @@ static DEVICE_ATTR( faye_device_attr2, (S_IRUGO|S_IWUSR|S_IWGRP), faye_device_at
 
 struct device faye_subDevice = {
     .init_name  = "faye_subDevice",
-    .bus        = &faye_bus,
+    //.bus        = &faye_bus,
     .parent     = &faye_device,
     .release    =  faye_subDevice_release,
 };
@@ -103,41 +102,40 @@ static int __init faye_device_init( void ){
 
     printk( "/**** faye_device_init() start ***************************************/\n" );
 
-    ret = device_register( &faye_device );
-    if( ret ){
-        printk( KERN_DEBUG "Unable to register faye_device\n" );
-        return ret;
-    }
-
-    if( device_create_file( &faye_device, &dev_attr_faye_device_attr1 ) ){
-        printk( KERN_DEBUG "Unable to create device attribute file\n" );
-        return ret;
-    }
-    
-    if( device_create_file( &faye_device, &dev_attr_faye_device_attr2 ) ){
-        printk( KERN_DEBUG "Unable to create device attribute file\n" );
-        return ret;
-    }
-
-    printk( KERN_DEBUG "faye_device register success\n" );
-    
-    ret = device_register( &faye_device_class );
+	ret = device_register( &faye_device_class );
     if( ret ){
         printk( KERN_DEBUG "Unable to register faye_device_class\n" );
         return ret;
     }
     printk( KERN_DEBUG "faye_device_class register success\n" );
 
+    ret = device_register( &faye_device );
+    if( ret ){
+        printk( KERN_DEBUG "Unable to register faye_device\n" );
+        return ret;
+    }
+    ret = device_create_file( &faye_device, &dev_attr_faye_device_attr1 );
+    if( ret ){
+        printk( KERN_DEBUG "Unable to create device attribute file\n" );
+        return ret;
+    }    
+    ret = device_create_file( &faye_device, &dev_attr_faye_device_attr2 );
+    if( ret ){
+        printk( KERN_DEBUG "Unable to create device attribute file\n" );
+        return ret;
+    }
+    printk( KERN_DEBUG "faye_device register success\n" );
+    
     ret = device_register( &faye_subDevice );
     if( ret ){
         printk( KERN_DEBUG "unable to register faye_subDevice\n" );
         return ret;
     }
-    if( device_create_file( &faye_subDevice, &dev_attr_faye_subDevice_attr ) ){
+    ret = device_create_file( &faye_subDevice, &dev_attr_faye_subDevice_attr );
+    if( ret ){
         printk( KERN_DEBUG "unable to create device attribute file\n" );
         return ret;
     }
-
     printk( KERN_DEBUG "faye_subDevice register success\n" );
 
     printk( "/**** faye_device_init end ***************************************/\n" );
@@ -147,12 +145,15 @@ static int __init faye_device_init( void ){
 static void __exit faye_device_exit( void ){
     printk( "/**** faye_device_exit() start ***************************************/\n" );
 
+    device_unregister( &faye_subDevice );
+    printk( "faye_subDevice exit success!\n" );
+
+	device_unregister( &faye_device_class );
+    printk( "faye_device_class exit success!\n" );
+
     device_unregister( &faye_device );
     printk( "faye_device exit success!\n" );
-    
-    device_unregister( &faye_device_class );
-    printk( "faye_device_class exit success!\n" );
-    
+        
     printk( "/**** faye_device_exit() end ***************************************/\n" );
 }
 

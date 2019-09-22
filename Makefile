@@ -16,11 +16,11 @@ KERNELDIR?=/lib/modules/$(shell uname -r)/build
 PWD:=$(shell pwd)
 
 all:clean
-	$(MAKE) -C device_test/
-	$(MAKE) -C driver_test/
-	$(MAKE) -C class_test/
 	@echo objs=$(usrObjs)
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
+	$(MAKE) -C class_test/
+	$(MAKE) -C device_test/
+	$(MAKE) -C driver_test/
 
 .PHONY:clean
 clean:
